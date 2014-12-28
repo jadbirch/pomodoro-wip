@@ -12,7 +12,8 @@
 		$(function(){
 			var pomodoro = new Date();
 			$('.timer').countdown({until: (25*60), format: 'MS', layout: '<h1>{mn}{sep}{snn}</h1>'});
-		})
+			$('title').countdown({until: (25*60), format: 'MS', layout: '{mn}{sep}{snn}'});
+		});
 	</script>
 </head>
 <body>
