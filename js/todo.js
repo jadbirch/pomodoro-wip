@@ -1,29 +1,64 @@
-function addList(myTable) {
-  var table = document.getElementById(myTable);
-  var rowCount = table.rows.length;
-  var row = table.insertRow(rowCount);
-  var b=document.getElementById('txt1').value;
-  var cell1 = row.insertCell(0);
-  var element1 = document.createElement("input");
-  element1.type = "text";
-  element1.style.width="100%";
-  element1.name = "txtbox[]";
-  element1.value=b;
-  cell1.appendChild(element1);
-  var cell2 = row.insertCell(1);
-  var element2 = document.createElement("input");
-  element2.type = "checkbox";
-  element2.name="chkbox[]";
-  element2.id=rowCount;
-  element2.onchange = function() { deleteElement(myTable, rowCount);};
-  cell2.appendChild(element2);
-  document.getElementById('txt1').value=" ";
-  document.getElementById('pTotal').innerHTML= rowCount + 1;
-}
+$(document).ready(function() {
+	function strike() {
+		$('.toggle').on('click', function() {
+			var $current = $(this).closest('li').find('label');
+			if ( $current.attr('data') == 'done' ) {
+				$current.attr('data', '');
+				$current.css('text-decoration', 'none');
+				$current.css('opacity', '1');
+				var oldCount = parseInt($('#pTotal').text());
+				$('#pTotal').text(oldCount + 1);
+			}
+			else {
+				$current.attr('data', 'done');
+				$current.css('text-decoration', 'line-through');
+				$current.css('opacity', '0.5');
+				var oldCount = parseInt($('#pTotal').text());
+				$('#pTotal').text(oldCount - 1);
+			}
+		});
+	}
 
-function deleteElement(table, rowID) {
-  var row = document.getElementById(rowID);
-  var table = document.getElementById(table);
-  table.deleteRow(row.rowIndex);
-}
+	$todoList = $('#todo-list');
+	$('#new-todo').keypress(function(e) {
+		if (e.which === 13) {
+			$('.destroy').off('click');
+			$('.toggle').off('click');
+			var todos = $todoList.html();
+			todos += ""+
+			"<li>" +
+			"<div class='view'>" +
+			"<label data='' style='margin-right: 1em'>" + " " + $('#new-todo').val() + "</label>" +
+			"<input class='toggle' type='checkbox'>" +
+			"</div>" +
+			"</li>";
+
+			$(this).val('');
+			$todoList.html(todos);
+			strike();
+			var oldCount = parseInt($('#pTotal').text());
+			$('#pTotal').text(oldCount + 1);
+		}
+	}); // end keypress
+
+	$('#add').click(function() {
+		$('.destroy').off('click');
+		$('.toggle').off('click');
+		var todos = $todoList.html();
+		todos += ""+
+		"<li>" +
+		"<div class='view'>" +
+		"<label data='' style='margin-right: 1em'>" + " " + $('#new-todo').val() + "</label>" +
+		"<input class='toggle' type='checkbox'>" +
+		"</div>" +
+		"</li>";
+
+		$('#new-todo').val('');
+		$todoList.html(todos);
+		strike();
+		$('#main').show();
+		var oldCount = parseInt($('#pTotal').text());
+		$('#pTotal').text(oldCount + 1);
+	});
+});
 

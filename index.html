@@ -18,16 +18,18 @@
 </head>
 <body>
 <div class="container">
-<div class="timer">
+	<div class="timer">
 
-</div>
-<h2>To-Do List</h2>
- <input type="textbox" id="txt1" />
-    <input type="button" value="Add Item" onclick="addList('ToDoListTable')" />
-     <table id="ToDoListTable" width="350px" border="0">
-        </table>
-        <p id="pTotal"></p>
-
+	</div>
+	<div id="todos">
+		<h1>To-Do List</h1>
+		<input id="new-todo" type="text" placeholder="To-Do">
+		<button id="add">Add</button>
+		<section id='main'>
+			<ul id='todo-list'></ul>
+		</section>
+		<p id="pTotal">0</p>
+	</div>
 </div>
 </body>
 </html>
