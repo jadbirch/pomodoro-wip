@@ -28,8 +28,8 @@ $(document).ready(function() {
 			todos += ""+
 			"<li>" +
 			"<div class='view'>" +
-			"<label data='' style='margin-right: 1em'>" + " " + $('#new-todo').val() + "</label>" +
 			"<input class='toggle' type='checkbox'>" +
+			"<label data='' style='margin-left: 1em'>" + " " + $('#new-todo').val() + "</label>" +
 			"</div>" +
 			"</li>";
 
