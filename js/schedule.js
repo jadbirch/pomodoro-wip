@@ -32,7 +32,9 @@ $(document).ready(function() {
     });
     $('body').droppable({
         drop: function(event, ui) {
-            ui.draggable.remove();
+            if(ui.draggable.attr("id") != "no_delete") {
+                ui.draggable.remove();
+            }
         }
     });
     $( "ul, li" ).disableSelection();
