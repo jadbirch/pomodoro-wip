@@ -8,7 +8,6 @@
 	<script src="js/jquery.plugin.min.js"></script>
 	<script src="js/jquery.countdown.min.js"></script>
 	<script src="js/todo.js"></script>
-<<<<<<< HEAD
 	<script src="js/schedule.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 </head>
@@ -16,14 +15,12 @@
 <div class="container">
 	<div class="timer">
 		<h1></h1>
-=======
 </head>
 <body>
 <div class="container">
 
 	<div class="timer">
 	<h1></h1>
->>>>>>> origin/master
 	</div>
 	<div id="todos">
 		<h1>To-Do List</h1>
@@ -35,7 +32,6 @@
 		<p id="pTotal">0</p>
 	</div>
 	<script type="text/javascript">
-<<<<<<< HEAD
 		var pomodoro = new Date();
 		pomodoro.setMinutes(pomodoro.getMinutes()+25);
 		var title = $('title').text();
@@ -61,16 +57,6 @@
 	<p id="timerlist"></p>
 	<button id="begin">Begin</button>
 </div>
-=======
-	var pomodoro = new Date();
-	pomodoro.setMinutes(pomodoro.getMinutes()+25);
-	var title = $('title').text();
-		$('.timer h1').countdown(pomodoro, function(event) {
-			document.title = event.strftime('%M:%S') + ' - ' + title;
-			$(this).text(event.strftime('%M:%S'));
-		});
-	</script>
->>>>>>> origin/master
 </div>
 </body>
 </html>
