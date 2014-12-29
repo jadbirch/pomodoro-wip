@@ -16,7 +16,7 @@ $(document).ready(function() {
         			break;
         		case 'Long Break':
         			$(item).attr("id", "long_break");
-        			break;
+        			break; 
         	}
         },
         update: function() {
