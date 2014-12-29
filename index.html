@@ -29,11 +29,14 @@
 	</div>
 	<script type="text/javascript">
 		var pomodoro = new Date();
-		pomodoro.setMinutes(pomodoro.getMinutes()+25);
+		pomodoro.setSeconds(pomodoro.getSeconds()+5);
 		var title = $('title').text();
 			$('.timer h1').countdown(pomodoro, function(event) {
 				document.title = event.strftime('%M:%S') + ' - ' + title;
 				$(this).text(event.strftime('%M:%S'));
+			}).on('finish.countdown', function(event) {
+				document.title = title;
+				$(this).text('TING!');
 			});
 	</script>
 	<div id="schedule">
