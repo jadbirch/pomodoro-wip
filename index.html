@@ -4,6 +4,9 @@
 	<title>Pomodoro Timer</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<script type="text/javascript">
+	var order = ['pomodoro'];
+	</script>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script src="js/jquery.plugin.min.js"></script>
 	<script src="js/jquery.countdown.min.js"></script>
@@ -27,18 +30,6 @@
 		</section>
 		<p id="pTotal">0</p>
 	</div>
-	<script type="text/javascript">
-		var pomodoro = new Date();
-		pomodoro.setSeconds(pomodoro.getSeconds()+5);
-		var title = $('title').text();
-			$('.timer h1').countdown(pomodoro, function(event) {
-				document.title = event.strftime('%M:%S') + ' - ' + title;
-				$(this).text(event.strftime('%M:%S'));
-			}).on('finish.countdown', function(event) {
-				document.title = title;
-				$(this).text('TING!');
-			});
-	</script>
 	<div id="schedule">
  	<h1>Scheduler</h1>
  	<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
@@ -56,5 +47,6 @@
 	<button id="begin">Begin</button>
 </div>
 </div>
+<script src="js/pomodoro.js"></script>
 </body>
 </html>

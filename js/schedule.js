@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var item;
-    var order;
+
     $( "#sortable" ).sortable({
         revert: true,
         beforeStop: function(event, ui) {
