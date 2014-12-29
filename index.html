@@ -6,20 +6,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script src="js/jquery.plugin.min.js"></script>
-	<script src="js/jquery.countdown.js"></script>
+	<script src="js/jquery.countdown.min.js"></script>
 	<script src="js/todo.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			var pomodoro = new Date();
-			$('.timer').countdown({until: (25*60), format: 'MS', layout: '<h1>{mn}{sep}{snn}</h1>'});
-			$('title').countdown({until: (25*60), format: 'MS', layout: '{mn}{sep}{snn}'});
-		});
-	</script>
 </head>
 <body>
 <div class="container">
-	<div class="timer">
 
+	<div class="timer">
+	<h1></h1>
 	</div>
 	<div id="todos">
 		<h1>To-Do List</h1>
@@ -30,6 +24,15 @@
 		</section>
 		<p id="pTotal">0</p>
 	</div>
+	<script type="text/javascript">
+	var pomodoro = new Date();
+	pomodoro.setMinutes(pomodoro.getMinutes()+25);
+	var title = $('title').text();
+		$('.timer h1').countdown(pomodoro, function(event) {
+			document.title = event.strftime('%M:%S') + ' - ' + title;
+			$(this).text(event.strftime('%M:%S'));
+		});
+	</script>
 </div>
 </body>
 </html>
