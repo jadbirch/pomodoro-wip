@@ -17,36 +17,33 @@
 <body>
 <div class="container">
 	<div class="timer">
-		<h1></h1>
+		<h1 id="timer">03:00</h1>
+		<button class="btn btn-primary btn-lg" id="begin">Begin</button><br><br>
 		<p style="text-align: center;" id="current">Currently on: Nothing</p>
 		<p style="text-align: center;" id="upcoming">Upcoming: Nothing</p>
 	</div>
-</div>
-<div class="container">
-	<div id="todos">
+	<div class="col-md-6" id="todos">
 		<h1>To-Do List</h1>
-		<input id="new-todo" type="text" placeholder="To-Do">
-		<button id="add">Add</button>
+		<input class="form-control" id="new-todo" type="text" placeholder="To-Do">
+		<button class="btn btn-primary" id="add">Add</button>
 		<section id='main'>
 			<ul id='todo-list'></ul>
 		</section>
 		<p id="pTotal">0</p>
 	</div>
-	<div id="schedule">
- 	<h1>Scheduler</h1>
- 	<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
-	<ul>
-    <li class="draggable ui-state-highlight" id="no_delete">Pomodoro</li>
-    <li class="draggable ui-state-highlight" id="no_delete">Short Break</li>
-    <li class="draggable ui-state-highlight" id="no_delete">Long Break</li>
-    </ul>
+	<div class="col-md-6" id="schedule">
+	 	<h1>Scheduler</h1>
+	 		<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
+			<ul>
+	    		<li class="list-group-item active draggable ui-state-highlight" id="no_delete">Pomodoro</li>
+			    <li class="list-group-item active draggable ui-state-highlight" id="no_delete">Short Break</li>
+			    <li class="list-group-item active draggable ui-state-highlight" id="no_delete">Long Break</li>
+		    </ul>
 
-    <h2>Current Schedule</h2>
-	<ul id="sortable">
-	</ul>
-	<p id="timerlist"></p>
-	<button id="begin">Begin</button>
-</div>
+			<ul id="sortable">
+			</ul>
+			<p id="timerlist"></p>
+	</div>
 </div>
 <script src="js/pomodoro.js"></script>
 </body>

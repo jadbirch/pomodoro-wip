@@ -4,22 +4,36 @@
 	margin: 0 auto;
 }
 
+#timer {
+	font-size:6em;
+}
+
 #schedule ul { 
-	min-height:44px;
+	height: 118px;
 	padding-left:0;
 	list-style-type: none;
 	margin: 5px; 
-	border: 1px solid black;
-	width: 180px;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius:5px;
+	width: 45%;
+	display: inline-block;
+	float:left;
+
 }
 
 #schedule li { 
-	margin: 5px;
+	margin: 5px auto;
 	padding: 5px;
 	width: 150px;
-	border: 1px solid black; 
+	border: 1px solid rgba(0,0,0,0.5); 
+	text-align:center;
 }
 
 #todo-list {
 	list-style-type: none;
+}
+
+#new-todo {
+	width:50%;
+	display:inline-block;
 }

@@ -1,8 +1,11 @@
 var pomodoro = new Date();
-pomodoro.getMinutes(pomodoro.getMinutes()+3);
+pomodoro.setMinutes(pomodoro.getMinutes()+3);
 var short_break;
 var timer;
 var title = $('title').text();
+$('#begin').click(function(){
+pomodoro = new Date();
+pomodoro.setMinutes(pomodoro.getMinutes()+3);
 $('.timer h1').countdown(pomodoro, function(event) {
 	document.title = event.strftime('%M:%S') + ' - ' + title;
 	$(this).text(event.strftime('%M:%S'));
@@ -36,6 +39,8 @@ $('.timer h1').countdown(pomodoro, function(event) {
 	$('.timer h1').countdown(timer, function(event){
 		$(this).text(event.strftime('%M:%S'));
 	}); 
+
+});
 
 });
 
