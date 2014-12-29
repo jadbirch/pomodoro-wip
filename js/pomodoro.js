@@ -5,6 +5,7 @@ var timer;
 var title = $('title').text();
 $('#begin').click(function(){
 pomodoro = new Date();
+$('#current').text("Currently on: Pomodoro");
 pomodoro.setMinutes(pomodoro.getMinutes()+3);
 $('.timer h1').countdown(pomodoro, function(event) {
 	document.title = event.strftime('%M:%S') + ' - ' + title;
@@ -16,13 +17,11 @@ $('.timer h1').countdown(pomodoro, function(event) {
 			timer = new Date();
 			timer.setMinutes(timer.getMinutes()+3);
 			break;
-
 		case 'short_break':
 			$('#current').text("Currently on: Short Break");
 			timer = new Date();
 			timer.setMinutes(timer.getMinutes()+1);
 			break;
-
 		case 'long_break':
 			$('#current').text("Currently on: Long Break");
 			timer = new Date();
