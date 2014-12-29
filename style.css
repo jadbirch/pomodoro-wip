@@ -12,9 +12,14 @@
 	border: 1px solid black;
 	width: 160px;
 }
+
 #schedule li { 
 	margin: 5px;
 	padding: 5px;
 	width: 150px;
 	border: 1px solid black; 
+}
+
+#todo-list {
+	list-style-type: none;
 }
