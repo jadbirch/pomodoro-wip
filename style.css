@@ -3,3 +3,18 @@
 	text-align:center;
 	margin: 0 auto;
 }
+
+#schedule ul { 
+	list-style-type: none;
+	margin: 5px; 
+	padding: 0; 
+	margin-bottom: 20px; 
+	border: 1px solid black;
+	width: 160px;
+}
+#schedule li { 
+	margin: 5px;
+	padding: 5px;
+	width: 150px;
+	border: 1px solid black; 
+}
