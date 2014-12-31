@@ -65,6 +65,7 @@ $(document).ready(function() {
 		}
 	});
 
+	//add a new todo
 	function addToDo() {
 		var oldCount = parseInt($('#pTotal').text());
 		$('.destroy').off('click');
