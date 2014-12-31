@@ -17,6 +17,9 @@ $(document).ready(function() {
 		todolist = JSON.parse(temptodolist);
 		isChecked = JSON.parse(tempIsChecked);
 		for (i = 0; i < todolist.length; i++) {
+			if(todolist[i] === null) {
+				continue;
+			}
 			var todos = $('#todo-list').html();
 			todos += ""+
 			"<li>" +
@@ -30,6 +33,7 @@ $(document).ready(function() {
 				initStrike(i);
 			}
 		}
+		strike();
 	}
 
 	function initStrike(id) {
@@ -41,35 +45,53 @@ $(document).ready(function() {
 		$('#pTotal').text(oldCount - 1);
 		var $chk = $current.closest('li').find('input');
 		$chk.attr('checked', true);
+		localStorage.setItem('pTotal', oldCount - 1);		
 	}
 
-	$('.toggle').on('click', function() {
-		var $current = $(this).closest('li').find('label');
-		if ( $current.attr('data') == 'done' ) {
-			$current.attr('data', '');
-			$current.css('text-decoration', 'none');
-			$current.css('opacity', '1');
-			var oldCount = parseInt($('#pTotal').text());
-			$('#pTotal').text(oldCount + 1);
-			isChecked[$current.attr('id')] = false;
-			localStorage.setItem('isChecked', JSON.stringify(isChecked));
-		}
-		else {
-			$current.attr('data', 'done');
-			$current.css('text-decoration', 'line-through');
-			$current.css('opacity', '0.5');
-			var oldCount = parseInt($('#pTotal').text());
-			$('#pTotal').text(oldCount - 1);
-			isChecked[$current.attr('id')] = true;
-			localStorage.setItem('isChecked', JSON.stringify(isChecked));
-		}
+	function strike() {
+		$('.toggle').on('click', function() {
+			var $current = $(this).closest('li').find('label');
+			if ( $current.attr('data') == 'done' ) {
+				$current.attr('data', '');
+				$current.css('text-decoration', 'none');
+				$current.css('opacity', '1');
+				var oldCount = parseInt($('#pTotal').text());
+				$('#pTotal').text(oldCount + 1);
+				isChecked[$current.attr('id')] = false;
+				localStorage.setItem('isChecked', JSON.stringify(isChecked));
+				localStorage.setItem('pTotal', oldCount + 1);
+			}
+			else {
+				$current.attr('data', 'done');
+				$current.css('text-decoration', 'line-through');
+				$current.css('opacity', '0.5');
+				var oldCount = parseInt($('#pTotal').text());
+				$('#pTotal').text(oldCount - 1);
+				isChecked[$current.attr('id')] = true;
+				localStorage.setItem('isChecked', JSON.stringify(isChecked));
+				localStorage.setItem('pTotal', oldCount - 1);
+			}
+		});
+	}
+
+	$('#clear').on('click', function() {
+		$('#main').each(function() {
+			$(this).find('label').each(function() {
+				if ($(this).attr('data') == 'done') {
+					var id = $(this).attr('id');
+					todolist[id] = null;
+					isChecked[id] = null;			
+					$(this).parent().remove();
+					localStorage.setItem('isChecked', JSON.stringify(isChecked));
+					localStorage.setItem('todolist', JSON.stringify(todolist));
+				}
+			});
+		});
 	});
 
 	//add a new todo
 	function addToDo() {
 		var oldCount = parseInt($('#pTotal').text());
-		$('.destroy').off('click');
-		$('.toggle').off('click');
 		var todos = $('#todo-list').html();
 		todos += ""+
 		"<li>" +
@@ -78,14 +100,15 @@ $(document).ready(function() {
 		"<label data='' style='margin-left: 1em' id='" + oldCount + "'>" + " " + $('#new-todo').val() + "</label>" +
 		"</div>" +
 		"</li>";
-		todolist.push($('#new-todo').val());
-		isChecked.push(false);
-		$(this).val('');
+		todolist[oldCount] = ($('#new-todo').val());
+		isChecked[oldCount] = (false);
+		$('#new-todo').val('');
 		$('#todo-list').html(todos);
 		$('#pTotal').text(oldCount + 1);
 		localStorage.setItem('pTotal', oldCount + 1);
 		localStorage.setItem('todolist', JSON.stringify(todolist));
 		localStorage.setItem('isChecked', JSON.stringify(isChecked));
+		strike();
 	}
 
 	$('#new-todo').keypress(function(e) {
@@ -95,8 +118,6 @@ $(document).ready(function() {
 	}); // end keypress
 
 	$('#add').click(function() {
-		$('.destroy').off('click');
-		$('.toggle').off('click');
 		addToDo();
 	});
 });
