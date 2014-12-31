@@ -4,6 +4,11 @@ $(document).ready(function() {
 	var isChecked = [];
 	init();
 	function init() {
+		pTotal = localStorage.getItem('pTotal');
+		if (!pTotal) {
+			pTotal = 0;
+		}
+		$('#pTotal').text(pTotal);
 		var temptodolist = localStorage.getItem('todolist');
 		var tempIsChecked = localStorage.getItem('isChecked');
 		if (temptodolist === null || temptodolist.length === 0 || tempIsChecked === null || tempIsChecked.length === 0) {
@@ -25,11 +30,6 @@ $(document).ready(function() {
 				initStrike(i);
 			}
 		}
-		pTotal = localStorage.getItem('pTotal');
-		if (!pTotal) {
-			pTotal = 0;
-		}
-		$('#pTotal').text(pTotal);
 	}
 
 	function initStrike(id) {
@@ -39,12 +39,11 @@ $(document).ready(function() {
 		$current.css('opacity', '0.5');
 		var oldCount = parseInt($('#pTotal').text());
 		$('#pTotal').text(oldCount - 1);
-		var $chk = $current.closest('li').find('checkbox');
-		$chk.prop('checked', true);
+		var $chk = $current.closest('li').find('input');
+		$chk.attr('checked', true);
 	}
 
 	$('.toggle').on('click', function() {
-		alert("clicked");
 		var $current = $(this).closest('li').find('label');
 		if ( $current.attr('data') == 'done' ) {
 			$current.attr('data', '');
