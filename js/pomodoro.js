@@ -3,8 +3,8 @@ pomodoro.setMinutes(pomodoro.getMinutes()+3);
 var short_break;
 var timer;
 var title = $('title').text();
-$('#begin').click(function(){
-pomodoro = new Date();
+
+	pomodoro = new Date();
 $('#current').text("Currently on: Pomodoro");
 pomodoro.setMinutes(pomodoro.getMinutes()+3);
 $('.timer h1').countdown(pomodoro, function(event) {
@@ -35,14 +35,18 @@ $('.timer h1').countdown(pomodoro, function(event) {
 	updateUpcoming();
 	$('#sortable li').first().remove();
 	$('#timerlist').text(order);
-	$('.timer h1').countdown(timer, function(event){
-		$(this).text(event.strftime('%M:%S'));
-	}); 
+});
+$('#timer').countdown('pause');
+$('#begin').click(function(){
+	$('#timer').countdown('resume');
 
 });
-
+$('#pause').click(function() {
+	$('#timer').countdown('pause');
 });
-
+$('#resume').click(function() {
+	$('#timer').countdown('resume');
+});
 function updateUpcoming() {
 	var upcoming = "Upcoming: ";
 	(order.length == 0) ? upcoming += "Nothing " : upcoming = upcoming;
