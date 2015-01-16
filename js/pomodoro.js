@@ -6,11 +6,18 @@ var title = $('title').text();
 $('#begin').click(function(){
 pomodoro = new Date();
 $('#current').text("Currently on: Pomodoro");
-pomodoro.setMinutes(pomodoro.getMinutes()+25);
+pomodoro.setSeconds(pomodoro.getMinutes()+10);
 $('.timer h1').countdown(pomodoro, function(event) {
 	document.title = event.strftime('%M:%S') + ' - ' + title;
 	$(this).text(event.strftime('%M:%S'));
 }).on('finish.countdown', function(event) {
+	order = order.slice(1);
+	updateUpcoming();
+	$('#sortable li').first().remove();
+	$('#timerlist').text(order);
+	var audio = new Audio('js/alarm.mp3');
+	audio.play();
+	document.title = "Bzzzzzz!";
 	switch(order[0]) {
 		case 'pomodoro':
 			$('#current').text("Currently on: Pomodoro");
@@ -29,12 +36,9 @@ $('.timer h1').countdown(pomodoro, function(event) {
 			break;
 		default:
 			$('#current').text("Currently on: Nothing");
+			$('.timer h1').text("25:00");
 			break;
 	}
-	order = order.slice(1);
-	updateUpcoming();
-	$('#sortable li').first().remove();
-	$('#timerlist').text(order);
 	$('.timer h1').countdown(timer, function(event){
 		$(this).text(event.strftime('%M:%S'));
 	}); 
