@@ -6,7 +6,7 @@ var title = $('title').text();
 $('#begin').click(function(){
 pomodoro = new Date();
 $('#current').text("Currently on: Pomodoro");
-pomodoro.setSeconds(pomodoro.getMinutes()+10);
+pomodoro.setMinutes(pomodoro.getMinutes()+25);
 $('.timer h1').countdown(pomodoro, function(event) {
 	document.title = event.strftime('%M:%S') + ' - ' + title;
 	$(this).text(event.strftime('%M:%S'));
