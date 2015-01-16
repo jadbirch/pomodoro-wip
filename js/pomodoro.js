@@ -6,7 +6,7 @@ var title = $('title').text();
 $('#begin').click(function(){
 pomodoro = new Date();
 $('#current').text("Currently on: Pomodoro");
-pomodoro.setMinutes(pomodoro.getMinutes()+3);
+pomodoro.setMinutes(pomodoro.getMinutes()+25);
 $('.timer h1').countdown(pomodoro, function(event) {
 	document.title = event.strftime('%M:%S') + ' - ' + title;
 	$(this).text(event.strftime('%M:%S'));
@@ -15,17 +15,17 @@ $('.timer h1').countdown(pomodoro, function(event) {
 		case 'pomodoro':
 			$('#current').text("Currently on: Pomodoro");
 			timer = new Date();
-			timer.setMinutes(timer.getMinutes()+3);
+			timer.setMinutes(timer.getMinutes()+25);
 			break;
 		case 'short_break':
 			$('#current').text("Currently on: Short Break");
 			timer = new Date();
-			timer.setMinutes(timer.getMinutes()+1);
+			timer.setMinutes(timer.getMinutes()+5);
 			break;
 		case 'long_break':
 			$('#current').text("Currently on: Long Break");
 			timer = new Date();
-			timer.setMinutes(timer.getMinutes()+2);
+			timer.setMinutes(timer.getMinutes()+15);
 			break;
 		default:
 			$('#current').text("Currently on: Nothing");
