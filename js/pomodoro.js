@@ -17,7 +17,6 @@ $('.timer h1').countdown(pomodoro, function(event) {
 	$('#timerlist').text(order);
 	var audio = new Audio('js/alarm.mp3');
 	audio.play();
-	document.title = "Bzzzzzz!";
 	switch(order[0]) {
 		case 'pomodoro':
 			$('#current').text("Currently on: Pomodoro");
@@ -37,6 +36,7 @@ $('.timer h1').countdown(pomodoro, function(event) {
 		default:
 			$('#current').text("Currently on: Nothing");
 			$('.timer h1').text("25:00");
+			document.title = "Pomodoro Timer";
 			break;
 	}
 	$('.timer h1').countdown(timer, function(event){
