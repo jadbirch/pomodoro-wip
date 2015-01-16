@@ -1,5 +1,5 @@
 var pomodoro = new Date();
-pomodoro.setMinutes(pomodoro.getMinutes()+3);
+pomodoro.setMinutes(pomodoro.getMinutes()+25);
 var short_break;
 var timer;
 var title = $('title').text();
