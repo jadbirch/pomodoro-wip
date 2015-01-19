@@ -24,11 +24,11 @@
 	var order = ['pomodoro'];
 	</script>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	<script src="js/jquery.plugin.min.js"></script>
 	<script src="js/jquery.countdown.min.js"></script>
 	<script src="js/todo.js"></script>
 	<script src="js/schedule.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	<!-- Enable drag & drop on mobile -->
 	<script src="js/jquery.ui.touch-punch.min.js"></script>
 </head>
@@ -51,9 +51,15 @@
 			<ul id='todo-list'></ul>
 		</section>
 		<p id="pTotal">0</p>
-	</div>
+	</div><div id="switcher"></div>
 	<div class="col-md-6" id="schedule">
 	 	<h1>Scheduler</h1>
+	 	<p>
+ 		 <label for="spinner">Repeat schedule:</label>
+ 		 <input id="spinner" name="value">
+ 		 <label for="spinner">times</label>
+ 		 <input type="checkbox" id="infinite">Repeat Infinitely</p>
+		</p>
 	 		<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
 			<ul>
 	    		<li class="list-group-item active draggable ui-state-highlight" id="no_delete">Pomodoro</li>
