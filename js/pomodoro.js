@@ -18,7 +18,7 @@ function updateUpcoming() {
 }
 $(document).ready(function() {
 	var spinner = $('#spinner').spinner();
-	var left;
+	var left = Number.MAX_VALUE;
 	spinner.width(30);
 	var done;
 	var short_break;
@@ -27,9 +27,17 @@ $(document).ready(function() {
 	var spinner = $('#spinner').spinner();
 	var audio = new Audio('js/alarm.wav');
 
-	if($('#default').prop('checked')) {
-		
-	}
+	$('#default').on('change', function() {
+		  if ( $('#default').prop(checked) ) {
+		    left = Number.MAX_VALUE;
+		    order = ["short break", "pomodoro", "short break", "pomodoro", "short break", "pomodoro", "long break"];
+		    console.log(order);
+		    updateUpcoming();
+		  } else {
+		    left = 0;
+		    order = [];
+		  }
+	});
 
 	$('#infinite').on('change', function() {
 		  if ( spinner.spinner( "option", "disabled" ) ) {
@@ -71,12 +79,13 @@ $(document).ready(function() {
 				if(left > 0) {
 					left--;
 					order = done;
-				}
-				$('#current').text("Currently on: Nothing");
-				document.title = "Pomodoro Timer";
+					finish();
+				} else {
+					$('#current').text("Currently on: Nothing");
+					document.title = "Pomodoro Timer";
+				}	
 				break;
 		}		
-		done = order;
 		order = order.slice(1);
 		updateUpcoming();
 		$('#sortable li').first().remove();
@@ -91,7 +100,6 @@ $(document).ready(function() {
 	    		finish();
 	    	},
 			tpl: function(el,opts) {
-				console.log("pomodoro");
 				var secs;
 				var mins;
 				if(opts.s < 10) {
@@ -118,7 +126,6 @@ $(document).ready(function() {
 		    		finish();
 		    	},
 				tpl: function(el,opts) {
-					console.log("short");
 					var secs;
 					var mins;
 					if(opts.s < 10) {
@@ -163,10 +170,13 @@ $(document).ready(function() {
 		});
 	}
 
+  	order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break", "pomodoro"];
+    done = order;
+    updateUpcoming();
 	$('#current').text("Currently on: Pomodoro");
 	$(".timer h1").countdown({
 		autostart: false,
-		s:25,
+		s:5,
     	done: function() {
     		finish();
     	},
