@@ -93,22 +93,27 @@ $(document).ready(function() {
 	function addToDo() {
 		var oldCount = parseInt($('#pTotal').text());
 		var todos = $('#todo-list').html();
-		todos += ""+
-		"<li>" +
-		"<div class='view'>" +
-		"<input class='toggle' type='checkbox'>" +
-		"<label data='' style='margin-left: 1em' id='" + oldCount + "'>" + " " + $('#new-todo').val() + "</label>" +
-		"</div>" +
-		"</li>";
-		todolist[oldCount] = ($('#new-todo').val());
-		isChecked[oldCount] = (false);
-		$('#new-todo').val('');
-		$('#todo-list').html(todos);
-		$('#pTotal').text(oldCount + 1);
-		localStorage.setItem('pTotal', oldCount + 1);
-		localStorage.setItem('todolist', JSON.stringify(todolist));
-		localStorage.setItem('isChecked', JSON.stringify(isChecked));
-		strike();
+		var current = $('#new-todo').val().length;
+		if(current > 0) {
+			todos += ""+
+			"<li>" +
+			"<div class='view'>" +
+			"<input class='toggle' type='checkbox'>" +
+			"<label data='' style='margin-left: 1em' id='" + oldCount + "'>" + " " + $('#new-todo').val() + "</label>" +
+			"</div>" +
+			"</li>";
+			todolist[oldCount] = ($('#new-todo').val());
+			isChecked[oldCount] = (false);
+			$('#new-todo').val('');
+			$('#todo-list').html(todos);
+			$('#pTotal').text(oldCount + 1);
+			localStorage.setItem('pTotal', oldCount + 1);
+			localStorage.setItem('todolist', JSON.stringify(todolist));
+			localStorage.setItem('isChecked', JSON.stringify(isChecked));
+			strike();
+		} else {
+			$('#new-todo').focus();
+		}
 	}
 
 	$('#new-todo').keypress(function(e) {
