@@ -42,13 +42,129 @@ $(document).ready(function() {
 		left = spinner.spinner("value") + 1;
 	});
 
+	function finish() {
+		$('.timer h1').remove();
+		$('.timer').prepend('<h1></h1>');
+		audio.play();
+		$('#begin').show();
+		done = order;
+		order = order.slice(1);
+		updateUpcoming();
+		$('#sortable li').first().remove();
+		$('#timerlist').text(order);
+		audio.play();
+		switch(order[0]) {
+			case 'pomodoro':
+				$('#current').text("Currently on: Pomodoro");
+				newPomodoro();
+				break;
+			case 'short_break':
+				$('#current').text("Currently on: Short Break");
+				newShortBreak();
+				break;
+			case 'long_break':
+				$('#current').text("Currently on: Long Break");
+				newLongBreak();
+				break;
+			default:
+				if(left > 0) {
+					left--;
+					order = done;
+				}
+				$('#current').text("Currently on: Nothing");
+				document.title = "Pomodoro Timer";
+				break;
+		}
+	}
+
+	function newPomodoro() {
+		$(".timer h1").countdown({
+			autostart: true,
+			s:10,
+	    	done: function() {
+	    		finish();
+	    	},
+			tpl: function(el,opts) {
+				console.log("pomodoro");
+				var secs;
+				var mins;
+				if(opts.s < 10) {
+					secs = "0" + opts.s;
+				} else {
+					secs = opts.s;
+				}
+				if(opts.m < 10) {
+					mins = "0" + opts.m;
+				} else {
+					mins = opts.m;
+				}
+				document.title = mins + ":" + secs + ' - ' + title;
+	       		$('.timer h1').text(mins + ":" + secs);
+	    	}
+		});
+	}
+
+	function newShortBreak() {
+		$(".timer h1").countdown({
+				autostart: true,
+				s:10,
+		    	done: function() {
+		    		finish();
+		    	},
+				tpl: function(el,opts) {
+					console.log("short");
+					var secs;
+					var mins;
+					if(opts.s < 10) {
+						secs = "0" + opts.s;
+					} else {
+						secs = opts.s;
+					}
+					if(opts.m < 10) {
+						mins = "0" + opts.m;
+					} else {
+						mins = opts.m;
+					}
+					document.title = mins + ":" + secs + ' - ' + title;
+		       		$('.timer h1').text(mins + ":" + secs);
+		    	}
+		});
+	}
+
+	function newLongBreak() {
+		$(".timer h1").countdown({
+				autostart: true,
+				s:15,
+		    	done: function() {
+    				finish();
+		    	},
+				tpl: function(el,opts) {
+					var secs;
+					var mins;
+					if(opts.s < 10) {
+						secs = "0" + opts.s;
+					} else {
+						secs = opts.s;
+					}
+					if(opts.m < 10) {
+						mins = "0" + opts.m;
+					} else {
+						mins = opts.m;
+					}
+					document.title = mins + ":" + secs + ' - ' + title;
+		       		$('.timer h1').text(mins + ":" + secs);
+		    	}
+		});
+	}
+
 	$(".timer h1").countdown({
 		autostart: false,
 		s:10,
     	done: function() {
-    		audio.play();
+    		finish();
     	},
 		tpl: function(el,opts) {
+			console.log("NO");
 			var secs;
 			var mins;
 			if(opts.s < 10) {
