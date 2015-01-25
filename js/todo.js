@@ -89,6 +89,15 @@ $(document).ready(function() {
 		});
 	});
 
+	$('#tick').on('click', function() {
+		$('.toggle').each(function(){
+			var closestLabel = $(this).next().attr("data");
+			if(closestLabel !== "done") {
+				$(this).click();
+			}
+		});
+	});
+
 	//add a new todo
 	function addToDo() {
 		var oldCount = parseInt($('#pTotal').text());
@@ -114,6 +123,10 @@ $(document).ready(function() {
 		} else {
 			$('#new-todo').focus();
 		}
+	}
+
+	function tickAll() {
+
 	}
 
 	$('#new-todo').keypress(function(e) {
