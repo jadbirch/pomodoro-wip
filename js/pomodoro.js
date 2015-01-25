@@ -1,4 +1,7 @@
-function updateUpcoming() {
+function updateUpcoming(isDelete) {
+	if(!isDelete) {
+		done = order;
+	}
 	var upcoming = "Upcoming: ";
 	(order.length == 0) ? upcoming += "Nothing " : upcoming = upcoming;
 	for (i = 0; i < order.length; i++) {
@@ -28,11 +31,11 @@ $(document).ready(function() {
 	var audio = new Audio('js/alarm.wav');
 
 	$('#default').on('change', function() {
-		  if ( $('#default').prop(checked) ) {
+		  if ( $('#default').is(':checked') ) {
 		    left = Number.MAX_VALUE;
-		    order = ["short break", "pomodoro", "short break", "pomodoro", "short break", "pomodoro", "long break"];
+		    order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break"];
 		    console.log(order);
-		    updateUpcoming();
+		    updateUpcoming(false);
 		  } else {
 		    left = 0;
 		    order = [];
@@ -79,6 +82,7 @@ $(document).ready(function() {
 				if(left > 0) {
 					left--;
 					order = done;
+					console.log(order);
 					finish();
 				} else {
 					$('#current').text("Currently on: Nothing");
@@ -87,12 +91,13 @@ $(document).ready(function() {
 				break;
 		}		
 		order = order.slice(1);
-		updateUpcoming();
+		updateUpcoming(true);
 		$('#sortable li').first().remove();
 		$('#timerlist').text(order);
 	}
 
 	function newPomodoro() {
+		$('#begin').hide();
 		$(".timer h1").countdown({
 			autostart: true,
 			s:25,
@@ -119,6 +124,7 @@ $(document).ready(function() {
 	}
 
 	function newShortBreak() {
+		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
 				s:5,
@@ -145,6 +151,7 @@ $(document).ready(function() {
 	}
 
 	function newLongBreak() {
+		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
 				s:15,
@@ -172,7 +179,7 @@ $(document).ready(function() {
 
   	order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break", "pomodoro"];
     done = order;
-    updateUpcoming();
+    updateUpcoming(false);
 	$('#current').text("Currently on: Pomodoro");
 	$(".timer h1").countdown({
 		autostart: false,

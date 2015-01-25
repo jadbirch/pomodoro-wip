@@ -22,7 +22,7 @@ $(document).ready(function() {
         update: function() {
             order = $('#sortable').sortable('toArray'); 
             $('#timerlist').text(order);
-            updateUpcoming();
+            updateUpcoming(false);
         }
     }).droppable({greedy:true});
     
@@ -36,7 +36,7 @@ $(document).ready(function() {
             if(ui.draggable.attr("id") != "no_delete") {
                 ui.draggable.remove();
             }
-            updateUpcoming();
+            updateUpcoming(false);
         }
     });
     $( "ul, li" ).disableSelection();
