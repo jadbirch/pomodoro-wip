@@ -44,15 +44,12 @@ $(document).ready(function() {
 
 	function finish() {
 		$('.timer h1').remove();
-		$('.timer').prepend('<h1></h1>');
+		$('.timer').prepend('<h1 id="timer"></h1>');
 		audio.play();
 		$('#begin').show();
-		done = order;
-		order = order.slice(1);
-		updateUpcoming();
-		$('#sortable li').first().remove();
-		$('#timerlist').text(order);
-		audio.play();
+		if(order.length === 0) {
+			$('.timer h1').text("25:00");
+		}
 		switch(order[0]) {
 			case 'pomodoro':
 				$('#current').text("Currently on: Pomodoro");
@@ -74,7 +71,12 @@ $(document).ready(function() {
 				$('#current').text("Currently on: Nothing");
 				document.title = "Pomodoro Timer";
 				break;
-		}
+		}		
+		done = order;
+		order = order.slice(1);
+		updateUpcoming();
+		$('#sortable li').first().remove();
+		$('#timerlist').text(order);
 	}
 
 	function newPomodoro() {
