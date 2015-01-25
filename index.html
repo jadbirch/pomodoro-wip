@@ -28,24 +28,6 @@
 <body>
 <div class="container">
 	<div class="timer">
-	    <script type="text/template" id="countdown-tpl">
-        <table>
-            <tr>
-                <th>years</th>
-                <th>days</th>
-                <th>hours</th>
-                <th>minutes</th>
-                <th>seconds</th>
-            </tr>
-            <tr>
-                <td><%= y %></td>
-                <td><%= d %></td>
-                <td><%= h %></td>
-                <td><%= m %></td>
-                <td><%= s %></td>
-            </tr>
-        </table>
-    </script>
 		<h1 id="timer">25:00</h1>
 		<button class="btn btn-primary btn-lg" id="begin">Begin</button><br><br>
 		<button class="btn btn-primary btn-lg" id="stop">Stop</button>
@@ -69,6 +51,7 @@
  		 <input id="spinner" name="value">
  		 <label for="spinner">times</label>
  		 <input type="checkbox" id="infinite">Repeat Infinitely</p>
+ 		 <input type="checkbox" id="default" checked="true">Use Default Schedule</p>
 		</p>
 	 		<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
 			<ul>
@@ -90,7 +73,7 @@
 <script src="js/jquery.countdown.js"></script>
 <script src="js/todo.js"></script>
 <script src="js/schedule.js"></script>	
-	<script src="js/jquery.ui.touch-punch.min.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
 
 </body>
 </html>

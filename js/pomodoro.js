@@ -25,7 +25,11 @@ $(document).ready(function() {
 	var timer;
 	var title = $('title').text();
 	var spinner = $('#spinner').spinner();
-	var audio = new Audio('js/alarm.mp3');
+	var audio = new Audio('js/alarm.wav');
+
+	if($('#default').prop('checked')) {
+		
+	}
 
 	$('#infinite').on('change', function() {
 		  if ( spinner.spinner( "option", "disabled" ) ) {
@@ -82,7 +86,7 @@ $(document).ready(function() {
 	function newPomodoro() {
 		$(".timer h1").countdown({
 			autostart: true,
-			s:10,
+			s:25,
 	    	done: function() {
 	    		finish();
 	    	},
@@ -109,7 +113,7 @@ $(document).ready(function() {
 	function newShortBreak() {
 		$(".timer h1").countdown({
 				autostart: true,
-				s:10,
+				s:5,
 		    	done: function() {
 		    		finish();
 		    	},
@@ -159,14 +163,14 @@ $(document).ready(function() {
 		});
 	}
 
+	$('#current').text("Currently on: Pomodoro");
 	$(".timer h1").countdown({
 		autostart: false,
-		s:10,
+		s:25,
     	done: function() {
     		finish();
     	},
 		tpl: function(el,opts) {
-			console.log("NO");
 			var secs;
 			var mins;
 			if(opts.s < 10) {
@@ -188,58 +192,4 @@ $(document).ready(function() {
 		$('#begin').hide();
 		$('.timer h1').countdown("start");
 	});
-
-/*
-	$('.timer h1').countdown('pause');
-	$('#begin').on('click', function(event) {
-		$('#begin').hide();
-		var now = new Date();
-		pomodoro.setMinutes(now.getMinutes()+25);
-		$('.timer h1').countdown("start");
-	});
-	/*
-	$('.timer h1').on('finish.countdown', function(event) {
-				audio.play();
-				$('#begin').show();
-				done = order;
-				order = order.slice(1);
-				updateUpcoming();
-				$('#sortable li').first().remove();
-				$('#timerlist').text(order);
-				audio.play();
-				switch(order[0]) {
-					case 'pomodoro':
-						$('#current').text("Currently on: Pomodoro");
-						timer = new Date();
-						timer.setMinutes(timer.getMinutes()+25);
-						break;
-					case 'short_break':
-						$('#current').text("Currently on: Short Break");
-						timer = new Date();
-						timer.setSeconds(timer.getMinutes()+5);
-						break;
-					case 'long_break':
-						$('#current').text("Currently on: Long Break");
-						timer = new Date();
-						timer.setSeconds(timer.getMinutes()+15);
-						break;
-					default:
-						if(left > 0) {
-							left--;
-							order = done;
-							//horrific fudge
-							$('#current').text("Currently on: Pomodoro");
-							timer = new Date();
-							timer.setMinutes(timer.getMinutes()+25);
-							break;
-						}
-						$('#current').text("Currently on: Nothing");
-						$('.timer h1').text("25:00");
-						document.title = "Pomodoro Timer";
-						break;
-				}
-				$('.timer h1').countdown(timer, function(event){
-					$(this).text(event.strftime('%M:%S'));
-				});
-			}); */
 });
