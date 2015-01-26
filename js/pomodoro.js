@@ -28,6 +28,7 @@ $(document).ready(function() {
 	var timer;
 	var title = $('title').text();
 	var spinner = $('#spinner').spinner();
+<<<<<<< HEAD
 	var audio = new Audio('js/alarm.wav');
 
 	$('#default').on('change', function() {
@@ -40,6 +41,18 @@ $(document).ready(function() {
 		    left = 0;
 		    order = [];
 		  }
+=======
+	var audio = new Audio('js/alarm.mp3');
+	var longbreaktime = 15;
+	var shortbreaktime = 5;
+
+	$('#longbreaktime').on('change', function() {
+		longbreaktime = $(this).val();
+	});
+
+	$('#shortbreaktime').on('change', function() {
+		shortbreaktime = $(this).val()
+>>>>>>> origin/gh-pages
 	});
 
 	$('#infinite').on('change', function() {
@@ -50,6 +63,19 @@ $(document).ready(function() {
 		    spinner.spinner( "disable" );
 		    left = Number.MAX_VALUE;
 		  }
+	});
+
+	$('#default').on('click', function() {
+		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
+		console.log(order);
+	});
+
+	$('#easy').on('click', function() {
+		order = ['short_break', 'pomodoro', 'long_break'];
+	});
+
+	$('hard').on('click', function() {
+		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
 	});
 
 	spinner.spinner("option", "min", 0);
@@ -127,7 +153,11 @@ $(document).ready(function() {
 		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
+<<<<<<< HEAD
 				s:5,
+=======
+				s:shortbreaktime,
+>>>>>>> origin/gh-pages
 		    	done: function() {
 		    		finish();
 		    	},
@@ -154,7 +184,7 @@ $(document).ready(function() {
 		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
-				s:15,
+				s:longbreaktime,
 		    	done: function() {
     				finish();
 		    	},

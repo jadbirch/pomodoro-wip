@@ -1,3 +1,33 @@
+* {
+	margin:0;
+}
+html {
+	height:100%;
+	margin:0;
+}
+
+body {
+	min-height:100%;
+	margin:0;
+	overflow-y:hidden !important;
+}
+
+#list {
+	width:20%;
+	height:100vh;
+	-webkit-box-shadow: 4px 0 10px 0 rgba(0,0,0,0.4);
+	box-shadow: 4px 0 10px 0 rgba(0,0,0,0.4);
+	float:left;
+	padding:0 10px;
+		overflow-y:hidden;
+}
+
+#right {
+	width:80%;
+	float:left;
+	padding-top:10%;
+}
+
 .timer {
 	width:50%;
 	text-align:center;
@@ -5,11 +35,24 @@
 }
 	
 #timer {
-	font-size:6em;
+	font-size:9em;
+	margin-top:0;
+}
+
+#begin {
+	border:2px solid rgb(160,160,160);
+	width:150px;
+	height:40px;
+	border-radius:10px;
+	font-size:1.5em;
+	color:rgb(150,150,150);
+	font-weight:bold;
+	text-transform: uppercase;
+	background-color:transparent;
 }
 
 #schedule ul { 
-	height: 118px;
+	min-height:118px;
 	padding-left:0;
 	list-style-type: none;
 	margin: 5px; 
@@ -34,11 +77,30 @@
 	padding-left:0;
 }
 
+#main {
+	height:70%;
+	overflow-y: auto;
+}
+
 #todos h1 {
 	margin-bottom:20px;
 }
 
 #new-todo {
-	width:50%;
+	width:80%;
 	display:inline-block;
+}
+
+.customtime {
+	width:30px;
+	text-align:center;
+}
+
+.todo-modifier button {
+	font-size: 13px;
+	display:none;
+
+}
+#todos {
+	height:100%;
 }

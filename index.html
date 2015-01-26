@@ -24,36 +24,95 @@
 	var order = ['pomodoro'];
 	</script>
 	<!-- Enable drag & drop on mobile -->
+	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script src="js/underscore.js"></script>
+	<script src="js/pomodoro.js"></script>
+	<script src="js/jquery.plugin.min.js"></script>
+	<script src="js/jquery.countdown.js"></script>
+	<script src="js/todo.js"></script>
+	<script src="js/schedule.js"></script>	
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/validate.js"></script>
 </head>
 <body>
-<div class="container">
-	<div class="timer">
-		<h1 id="timer">25:00</h1>
-		<button class="btn btn-primary btn-lg" id="begin">Begin</button><br><br>
-		<button class="btn btn-primary btn-lg" id="stop">Stop</button>
-		<p style="text-align: center;" id="current">Currently on: Nothing</p>
-		<p style="text-align: center;" id="upcoming">Upcoming: Nothing</p>
-	</div>
-	<div class="col-md-6" id="todos">
-		<h1>To-Do List</h1>
+<div id="list">
+
+<h1>To Do List</h1>
+
+	<div class="" id="todos">
 		<input class="form-control" id="new-todo" type="text" placeholder="To-Do">
-		<button class="btn btn-primary" id="add">Add</button>
-		<button class="btn btn-primary" id="clear">Clear Completed</button>
+		<button class="btn btn-primary" id="add">+</button>
 		<section id='main'>
 			<ul id='todo-list'></ul>
 		</section>
-		<p id="pTotal">0</p>
+		<div class="todo-modifier">
+			<button class="btn" id="clear">Clear Completed</button>
+			<button class="btn" id="tick">Tick All</button>
+		</div>
+		<span id="pTotal" style="display:none">0</span>
+	</div>
+
+</div>
+
+<div id="right">
+
+	<div class="timer">
+		<h1 id="timer">25:00</h1>
+		<button class="" id="begin">Start</button><br><br>
+		<p style="text-align: center;" id="current">Currently on: Nothing</p>
+		<p style="text-align: center;" id="upcoming">Upcoming: Nothing</p>
+	</div>
+
+</div>
+<!-- <div class="container">
+
+	<div class="col-md-6" id="todos">
+		<h1>To-Do List</h1>
+		<input class="form-control" id="new-todo" type="text" placeholder="To-Do">
+		<button class="btn btn-primary" id="add">+</button>
+		<button class="btn btn-primary" id="clear">Clear Completed</button>
+		<button class="btn btn-primary" id="tick">Tick All</button>
+		<section id='main'>
+			<ul id='todo-list'></ul>
+		</section>
 	</div><div id="switcher"></div>
 	<div class="col-md-6" id="schedule">
 	 	<h1>Scheduler</h1>
+
 	 	<p>
+<<<<<<< HEAD
  		 <label for="spinner">Repeat schedule:</label>
  		 <input id="spinner" name="value">
  		 <label for="spinner">times</label>
  		 <input type="checkbox" id="infinite">Repeat Infinitely</p>
  		 <input type="checkbox" id="default" checked="true">Use Default Schedule</p>
+=======
+	 		<label for="spinner">Repeat schedule:</label>
+	 		<input id="spinner" name="value">
+	 		<label for="spinner">times</label>
+	 		<input type="checkbox" id="infinite">Repeat Infinitely</p>
 		</p>
-	 		<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
+
+		<p>
+			<label for="longbreaktime">Length of long break:</label>
+			<input class="customtime" id="longbreaktime" value="15">
+>>>>>>> origin/gh-pages
+		</p>
+
+		<p>
+			<label for="shortbreaktime">Length of short break:</label>
+			<input class="customtime" id="shortbreaktime" value="5">
+		</p>
+
+		<p>
+		<button class="btn btn-primary" id="default">Default</button>
+		<button class="btn btn-primary" id="easy">Easy</button>
+		<button class="btn btn-primary" id="hard">Hard</button>
+		</p>
+		
+
+ 		<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
 			<ul>
 	    		<li class="list-group-item active draggable ui-state-highlight" id="no_delete">Pomodoro</li>
 			    <li class="list-group-item active draggable ui-state-highlight" id="no_delete">Short Break</li>
@@ -63,7 +122,9 @@
 			<ul id="sortable">
 			</ul>
 			<p id="timerlist"></p>
+		</p>
 	</div>
+<<<<<<< HEAD
 </div>
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
@@ -75,5 +136,8 @@
 <script src="js/schedule.js"></script>	
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 
+=======
+</div> -->
+>>>>>>> origin/gh-pages
 </body>
 </html>
