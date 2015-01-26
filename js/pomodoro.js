@@ -47,6 +47,19 @@ $(document).ready(function() {
 		  }
 	});
 
+	$('#default').on('click', function() {
+		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
+		console.log(order);
+	});
+
+	$('#easy').on('click', function() {
+		order = ['short_break', 'pomodoro', 'long_break'];
+	});
+
+	$('hard').on('click', function() {
+		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
+	});
+
 	spinner.spinner("option", "min", 0);
 	spinner.on("spin", function() {
 		left = spinner.spinner("value") + 1;
@@ -176,7 +189,6 @@ $(document).ready(function() {
     		finish();
     	},
 		tpl: function(el,opts) {
-			console.log("NO");
 			var secs;
 			var mins;
 			if(opts.s < 10) {
