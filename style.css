@@ -12,6 +12,15 @@ body {
 	overflow-y:hidden !important;
 }
 
+#timeline {
+	border-radius:5px;
+	border:2px solid rgb(160,160,160);
+	color:rgb(150,150,150);
+	background-color:transparent;
+	padding:1%;
+	height:5vh;
+}
+
 #list {
 	width:20%;
 	height:100vh;
