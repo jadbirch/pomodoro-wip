@@ -15,8 +15,8 @@ body {
 #list {
 	width:20%;
 	height:100vh;
-	-webkit-box-shadow: 4px 0 10px 0 rgba(0,0,0,0.4);
-	box-shadow: 4px 0 10px 0 rgba(0,0,0,0.4);
+	-webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
+	box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
 	float:left;
 	padding:0 10px;
 		overflow-y:hidden;
