@@ -26,6 +26,7 @@ $(document).ready(function() {
 	var title = $('title').text();
 	var spinner = $('#spinner').spinner();
 	var audio = new Audio('js/alarm.wav');
+	var changeTitle = true;
 	init();
 	$('#default').on('change', function() {
 		  if ( $('#default').is(':checked') ) {
@@ -131,6 +132,11 @@ $(document).ready(function() {
 	}
 
 	function newPomodoro() {
+		changeTitle = false;
+		document.title = "New Pomodoro";
+		setTimeout(function() {
+			changeTitle = true;
+		}, 5000);
 		$('#begin').hide();
 		$(".timer h1").countdown({
 			autostart: true,
@@ -151,13 +157,20 @@ $(document).ready(function() {
 				} else {
 					mins = opts.m;
 				}
-				document.title = mins + ":" + secs + ' - ' + title;
+				if(changeTitle) { 
+					document.title = mins + ":" + secs + ' - ' + title;
+				}
 	       		$('.timer h1').text(mins + ":" + secs);
 	    	}
 		});
 	}
 
 	function newShortBreak() {
+		changeTitle = false;
+		document.title = "New Short Break";
+		setTimeout(function() {
+			changeTitle = true;
+		}, 5000);
 		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
@@ -178,13 +191,20 @@ $(document).ready(function() {
 					} else {
 						mins = opts.m;
 					}
+				if(changeTitle) { 
 					document.title = mins + ":" + secs + ' - ' + title;
+				}
 		       		$('.timer h1').text(mins + ":" + secs);
 		    	}
 		});
 	}
 
 	function newLongBreak() {
+		changeTitle = false;
+		document.title = "New Long Break";
+		setTimeout(function() {
+			changeTitle = true;
+		}, 5000);
 		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
@@ -205,13 +225,15 @@ $(document).ready(function() {
 					} else {
 						mins = opts.m;
 					}
+				if(changeTitle) { 
 					document.title = mins + ":" + secs + ' - ' + title;
+				}
 		       		$('.timer h1').text(mins + ":" + secs);
 		    	}
 		});
 	}
-		$('#current').text("Currently on: Pomodoro");
 
+	$('#current').text("Currently on: Nothing");
 	$(".timer h1").countdown({
 		autostart: false,
 		s:25,
