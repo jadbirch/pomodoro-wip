@@ -287,20 +287,20 @@ $(document).ready(function() {
 		{
 			 //$('#hello').addClass("bounceInUp animated");
 
-			 $('#hello').animate({bottom: '-10%'});
-			 $('#hello').addClass("bounce animated");
+			 $('#bounceLayer').animate({bottom: '-10%'});
+			 $('#bounceLayer').addClass("bounce animated");
 			bounceClick=false;
 		}
 		else
 		{
-			$('#hello').animate({bottom: '-45%'});
-			$('#hello').addClass("bounce animated");
+			$('#bounceLayer').animate({bottom: '-47%'});
+			$('#bounceLayer').addClass("bounce animated");
 			bounceClick=true;
 		}
 	
-	$('#hello').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
+	$('#bounceLayer').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
 	{
-		$('#hello').removeClass("bounce animated");
+		$('#bounceLayer').removeClass("bounce animated");
 	});
 	});
 });

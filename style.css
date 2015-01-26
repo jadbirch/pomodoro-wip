@@ -213,18 +213,44 @@ body {
 
 #hello
 {
-	height : 50%;
-	width : 80%;
+	height : 100%;
+	width : 100%;
+	postion:relative;
 	background-color: white;
+	bottom: 0px;
 	-webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
 	box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
-	text-align:center;
-	font-size:1.5em;
+
+}
+#trapBut
+{
+	postion:relative;
+	margin: 0 auto 0 auto;
+	border-bottom: 30px solid rgb(180,180,180);
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	height: 0;
+	width: 25%;
+	position: relative;
+	top: 0%;
+
+}
+#bounceLayer
+{
 	-vendor-animation-duration: 3s;
 	-vendor-animation-delay: 0.5s;
 	-vendor-animation-iteration-count: infinite;
-	position: absolute;
-	bottom: -45%;
+
+	position: fixed;
+	height : 50%;
+	width : 80%;
+	background-color: transparent;
+	
+	text-align:center;
+
+	bottom: -47%;
+
+
+
 	z-index: 1;
-	overflow-y:hidden;
 }
