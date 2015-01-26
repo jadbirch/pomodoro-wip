@@ -101,7 +101,7 @@ body {
 }
 
 #main {
-	height:70%;
+	height:85%;
 	overflow-y: auto;
 }
 
@@ -113,8 +113,10 @@ body {
 	width:80%;
 	display:inline-block;
 	border: 0;
+	border-top:0 !important;
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 	border-radius:0;
+	box-shadow:none;
 }
 
 #new-todo:focus {
@@ -136,6 +138,7 @@ body {
 }
 #todos {
 	height:100%;
+	padding-top:10px;
 }
 
 .buttons {
