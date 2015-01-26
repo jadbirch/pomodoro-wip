@@ -27,6 +27,7 @@ $(document).ready(function() {
 	var spinner = $('#spinner').spinner();
 	var audio = new Audio('js/alarm.wav');
 	var changeTitle = true;
+	var bounceClick=true;
 	init();
 	$('#default').on('change', function() {
 		  if ( $('#default').is(':checked') ) {
@@ -261,5 +262,28 @@ $(document).ready(function() {
 	$('#begin').on("click", function() {
 		$('#begin').hide();
 		$('.timer h1').countdown("start");
+	});
+
+	$('#bounce').on("click",function()
+	{
+		if(bounceClick)
+		{
+			 //$('#hello').addClass("bounceInUp animated");
+
+			 $('#hello').animate({bottom: '450px'});
+			 $('#hello').addClass("bounce animated");
+			bounceClick=false;
+		}
+		else
+		{
+			$('#hello').animate({bottom: '10px'});
+			$('#hello').addClass("bounce animated");
+			bounceClick=true;
+		}
+	
+	$('#hello').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
+	{
+		$('#hello').removeClass("bounce animated");
+	});
 	});
 });
