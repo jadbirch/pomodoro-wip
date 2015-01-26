@@ -36,7 +36,27 @@
 	<script src="js/validate.js"></script>
 </head>
 <body>
-<div class="container">
+<div id="list">
+
+<h1>To Do List</h1>
+
+	<div class="" id="todos">
+		<input class="form-control" id="new-todo" type="text" placeholder="To-Do">
+		<button class="btn btn-primary" id="add">+</button>
+		<section id='main'>
+			<ul id='todo-list'></ul>
+		</section>
+		<div class="todo-modifier">
+			<button class="btn" id="clear">Clear Completed</button>
+			<button class="btn" id="tick">Tick All</button>
+		</div>
+		<span id="pTotal" style="display:none">0</span>
+	</div>
+
+</div>
+
+<div id="right">
+
 	<div class="timer">
 	    <script type="text/template" id="countdown-tpl">
         <table>
@@ -57,10 +77,14 @@
         </table>
     </script>
 		<h1 id="timer">25:00</h1>
-		<button class="btn btn-primary btn-lg" id="begin">Begin</button><br><br>
+		<button class="" id="begin">Start</button><br><br>
 		<p style="text-align: center;" id="current">Currently on: Nothing</p>
 		<p style="text-align: center;" id="upcoming">Upcoming: Nothing</p>
 	</div>
+
+</div>
+<!-- <div class="container">
+
 	<div class="col-md-6" id="todos">
 		<h1>To-Do List</h1>
 		<input class="form-control" id="new-todo" type="text" placeholder="To-Do">
@@ -96,7 +120,7 @@
 		<button class="btn btn-primary" id="easy">Easy</button>
 		<button class="btn btn-primary" id="hard">Hard</button>
 		</p>
-		<!--
+		
 
  		<p>Drag and drop a timer onto the current schedule. Drop a timer outside of the list to delete.</p>
 			<ul>
@@ -109,8 +133,7 @@
 			</ul>
 			<p id="timerlist"></p>
 		</p>
-		-->
 	</div>
-</div>
+</div> -->
 </body>
 </html>
