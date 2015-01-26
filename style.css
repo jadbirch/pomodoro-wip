@@ -81,6 +81,23 @@ body {
 #todo-list {
 	list-style-type: none;
 	padding-left:0;
+	padding-top:5px;
+}
+
+.view {
+	vertical-align: middle;
+	padding:5px 0;
+}
+
+#todo-list label {
+	font-weight:normal;
+	line-height:normal;
+	margin-bottom:0;
+}
+.toggle {
+	margin:0 !important;
+	position:relative;
+	top:2px;
 }
 
 #main {
