@@ -235,7 +235,8 @@ $(document).ready(function() {
 		    	}
 		});
 	}
-
+	var first=true;
+	var total;
 	$('#current').text("Currently on: Nothing");
 	$(".timer h1").countdown({
 		autostart: false,
@@ -244,8 +245,18 @@ $(document).ready(function() {
     		finish();
     	},
 		tpl: function(el,opts) {
+			if(first) {
+				total = opts.s + (opts.m * 60);
+				console.log(total);
+				first = false;
+			} 
 			var secs;
 			var mins;
+			var secondsleft = opts.s + (opts.m * 60);
+			var percent = ((total - secondsleft) / total);
+			console.log(percent);
+			var width =  percent * $('.progress').width();
+			$('.progress-bar').css('width',width);
 			if(opts.s < 10) {
 				secs = "0" + opts.s;
 			} else {

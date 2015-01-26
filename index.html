@@ -36,6 +36,7 @@
 	<script src="js/todo.js"></script>
 	<script src="js/schedule.js"></script>	
 	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="list">
@@ -59,6 +60,11 @@
 	<div class="timer">
 		<h1 id="timer">25:00</h1>
 		<button class="buttons" id="begin">Start</button><br><br>
+
+		<div class="progress">
+			<div style="transition:all 1s" class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1px"></div>
+		</div>
+
 		<div id="timeline">
 			<div id="pomodoro"></div>
 			<div id="short_break"></div>
@@ -69,6 +75,7 @@
 		<p style="text-align: center;" id="current">Currently on: Nothing</p>
 		<p style="text-align: center;" id="upcoming">Upcoming: Nothing</p>
 	</div>
+
 
 	<div id="hello">
 		hello
