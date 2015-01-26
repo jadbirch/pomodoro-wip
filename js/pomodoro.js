@@ -65,15 +65,18 @@ $(document).ready(function() {
 
 	$('#default').on('click', function() {
 		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
+		updateUpcoming();
 		console.log(order);
 	});
 
 	$('#easy').on('click', function() {
 		order = ['short_break', 'pomodoro', 'long_break'];
+		updateUpcoming();
 	});
 
-	$('hard').on('click', function() {
+	$('#hard').on('click', function() {
 		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
+		updateUpcoming();
 	});
 
 	spinner.spinner("option", "min", 0);
