@@ -124,6 +124,7 @@ $(document).ready(function() {
 			localStorage.setItem('pTotal', oldCount + 1);
 			localStorage.setItem('todolist', JSON.stringify(todolist));
 			localStorage.setItem('isChecked', JSON.stringify(isChecked));
+			
 			$('.todo-modifier button').show();
 			strike();
 		} else {

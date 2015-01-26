@@ -28,6 +28,22 @@ body {
 	padding-top:10%;
 }
 
+#break_tip {
+	position:absolute;
+	top:50px;
+	left:550px;
+	opacity:0;
+	color:gray;
+	z-index:500000;
+    -webkit-transition: opacity 2s ease-in;
+   	-moz-transition: opacity 2s ease-in;
+    -ms-transition: opacity 2s ease-in;
+     -o-transition: opacity 2s ease-in;
+        transition: opacity 2s ease-in;
+}
+#break_tip.load {
+	opacity:1;
+}
 .timer {
 	width:50%;
 	text-align:center;
@@ -45,7 +61,7 @@ body {
 #begin {
 	border:2px solid rgb(160,160,160);
 	width:150px;
-	height:40px;
+	height:50px;
 	border-radius:10px;
 	font-size:1.5em;
 	font-weight:bold;

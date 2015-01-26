@@ -1,3 +1,5 @@
+// function for updating the text that shows what is coming up. outside the document scope for some reason...
+
 function updateUpcoming() {
 	var upcoming = "Upcoming: ";
 	(order.length == 0) ? upcoming += "Nothing " : upcoming = upcoming;
@@ -16,17 +18,19 @@ function updateUpcoming() {
 	}
 	$('#upcoming').text(upcoming);
 }
+
 $(document).ready(function() {
-	var spinner = $('#spinner').spinner();
-	var left = Number.MAX_VALUE;
-	spinner.width(30);
-	var done;
+	var left = Number.MAX_VALUE; // number of remaining repeats
+	var done; 
 	var short_break;
 	var timer;
-	var title = $('title').text();
-	var spinner = $('#spinner').spinner();
-	var audio = new Audio('js/alarm.wav');
+	var title = $('title').text(); // stores the current title so we can concatenate to it
+	var audio = new Audio('js/alarm.wav'); // load in the alarm noise
+	var longbreaktime = 15; // default time for a long break
+	var shortbreaktime = 5; // default time for a short break
+	var breakSuggestions = ['have a cup of tea', 'go for a walk', 'meditate'];
 	init();
+
 	$('#default').on('change', function() {
 		  if ( $('#default').is(':checked') ) {
 		    left = Number.MAX_VALUE;
@@ -44,16 +48,13 @@ $(document).ready(function() {
 	    updateUpcoming();
 	}
 
-	var longbreaktime = 15;
-	var shortbreaktime = 5;
+	// $('#longbreaktime').on('change', function() {
+	// 	longbreaktime = $(this).val();
+	// });
 
-	$('#longbreaktime').on('change', function() {
-		longbreaktime = $(this).val();
-	});
-
-	$('#shortbreaktime').on('change', function() {
-		shortbreaktime = $(this).val()
-	});
+	// $('#shortbreaktime').on('change', function() {
+	// 	shortbreaktime = $(this).val()
+	// });
 
 	$('#infinite').on('change', function() {
 		  if ( spinner.spinner( "option", "disabled" ) ) {
@@ -81,11 +82,6 @@ $(document).ready(function() {
 		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break', 'pomodoro'];
 		done = order;
 		updateUpcoming();
-	});
-
-	spinner.spinner("option", "min", 0);
-	spinner.on("spin", function() {
-		left = spinner.spinner("value") + 1;
 	});
 
 	function finish() {
@@ -159,11 +155,15 @@ $(document).ready(function() {
 
 	function newShortBreak() {
 		$('#begin').hide();
+		console.log(breakSuggestions[Math.floor(Math.random() * breakSuggestions.length)]);
+		$('#break_tip').html('Why not ' + breakSuggestions[Math.floor(Math.random() * breakSuggestions.length)] + '?');
+		$('#break_tip').addClass('load');
 		$(".timer h1").countdown({
 				autostart: true,
 				s:shortbreaktime,
 		    	done: function() {
 		    		finish();
+		    		$('#break_tip').removeClass('load');
 		    	},
 				tpl: function(el,opts) {
 					var secs;
@@ -240,4 +240,5 @@ $(document).ready(function() {
 		$('#begin').hide();
 		$('.timer h1').countdown("start");
 	});
+
 });
