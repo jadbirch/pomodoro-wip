@@ -269,17 +269,20 @@ $(document).ready(function() {
 
 	$('#bounce').on("click",function()
 	{
+		var height = $("#right").height();
+		var bounceHeight = height * 0.9 + 'px';
+
 		if(bounceClick)
 		{
 			 //$('#hello').addClass("bounceInUp animated");
 
-			 $('#hello').animate({bottom: '450px'});
+			 $('#hello').animate({bottom: '-10%'});
 			 $('#hello').addClass("bounce animated");
 			bounceClick=false;
 		}
 		else
 		{
-			$('#hello').animate({bottom: '10px'});
+			$('#hello').animate({bottom: '-45%'});
 			$('#hello').addClass("bounce animated");
 			bounceClick=true;
 		}

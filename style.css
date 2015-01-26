@@ -211,12 +211,14 @@ body {
 
 #hello
 {
+	height : 50%;
+	width : 80%; 
+	background-color: blue;
 	text-align:center;
 	font-size:1.5em;
 	-vendor-animation-duration: 3s;
 	-vendor-animation-delay: 0.5s;
 	-vendor-animation-iteration-count: infinite;
 	position: absolute;
-	left: 58%;
-	bottom: 10px;
+	bottom: -45%;
 }
