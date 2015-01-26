@@ -26,6 +26,16 @@ $(document).ready(function() {
 	var title = $('title').text();
 	var spinner = $('#spinner').spinner();
 	var audio = new Audio('js/alarm.mp3');
+	var longbreaktime = 15;
+	var shortbreaktime = 5;
+
+	$('#longbreaktime').on('change', function() {
+		longbreaktime = $(this).val();
+	});
+
+	$('#shortbreaktime').on('change', function() {
+		shortbreaktime = $(this).val()
+	});
 
 	$('#infinite').on('change', function() {
 		  if ( spinner.spinner( "option", "disabled" ) ) {
@@ -109,7 +119,7 @@ $(document).ready(function() {
 	function newShortBreak() {
 		$(".timer h1").countdown({
 				autostart: true,
-				s:10,
+				s:shortbreaktime,
 		    	done: function() {
 		    		finish();
 		    	},
@@ -136,7 +146,7 @@ $(document).ready(function() {
 	function newLongBreak() {
 		$(".timer h1").countdown({
 				autostart: true,
-				s:15,
+				s:longbreaktime,
 		    	done: function() {
     				finish();
 		    	},
