@@ -50,6 +50,10 @@ body {
 	text-transform: uppercase;
 	background-color:transparent;
 }
+#begin:hover {
+	border:2px solid rgb(110,110,110);
+	color:rgb(100,100,100);
+}
 
 #schedule ul { 
 	min-height:118px;
