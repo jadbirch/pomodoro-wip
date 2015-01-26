@@ -89,6 +89,16 @@ body {
 #new-todo {
 	width:80%;
 	display:inline-block;
+	border: 0;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	border-radius:0;
+}
+
+#new-todo:focus {
+	outline:none;
+	box-shadow:none;
+	border-bottom: 1px solid rgba(0,0,0,0.4);
+	-webkit-box-shadow:none	;
 }
 
 .customtime {
