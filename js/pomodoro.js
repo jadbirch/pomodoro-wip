@@ -1,7 +1,4 @@
-function updateUpcoming(isDelete) {
-	if(!isDelete) {
-		done = order;
-	}
+function updateUpcoming() {
 	var upcoming = "Upcoming: ";
 	(order.length == 0) ? upcoming += "Nothing " : upcoming = upcoming;
 	for (i = 0; i < order.length; i++) {
@@ -29,18 +26,23 @@ $(document).ready(function() {
 	var title = $('title').text();
 	var spinner = $('#spinner').spinner();
 	var audio = new Audio('js/alarm.wav');
-
+	init();
 	$('#default').on('change', function() {
 		  if ( $('#default').is(':checked') ) {
 		    left = Number.MAX_VALUE;
 		    order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break"];
-		    console.log(order);
-		    updateUpcoming(false);
+		    updateUpcoming();
 		  } else {
 		    left = 0;
 		    order = [];
 		  }
 	});
+
+	function init() {
+	  	order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break", "pomodoro"];
+	    done = order;
+	    updateUpcoming();
+	}
 
 	var longbreaktime = 15;
 	var shortbreaktime = 5;
@@ -64,18 +66,20 @@ $(document).ready(function() {
 	});
 
 	$('#default').on('click', function() {
-		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
+		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break', 'pomodoro'];
+		done = order;
 		updateUpcoming();
-		console.log(order);
 	});
 
 	$('#easy').on('click', function() {
-		order = ['short_break', 'pomodoro', 'long_break'];
+		order = ['short_break', 'pomodoro', 'long_break', 'pomodoro'];
+		done = order;
 		updateUpcoming();
 	});
 
 	$('#hard').on('click', function() {
-		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
+		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break', 'pomodoro'];
+		done = order;
 		updateUpcoming();
 	});
 
@@ -109,8 +113,10 @@ $(document).ready(function() {
 				if(left > 0) {
 					left--;
 					order = done;
+					console.log("End");
 					console.log(order);
 					finish();
+					return;
 				} else {
 					$('#current').text("Currently on: Nothing");
 					document.title = "Pomodoro Timer";
@@ -118,7 +124,8 @@ $(document).ready(function() {
 				break;
 		}		
 		order = order.slice(1);
-		updateUpcoming(true);
+		console.log(order);
+		updateUpcoming();
 		$('#sortable li').first().remove();
 		$('#timerlist').text(order);
 	}
@@ -203,14 +210,11 @@ $(document).ready(function() {
 		    	}
 		});
 	}
+		$('#current').text("Currently on: Pomodoro");
 
-  	order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break", "pomodoro"];
-    done = order;
-    updateUpcoming(false);
-	$('#current').text("Currently on: Pomodoro");
 	$(".timer h1").countdown({
 		autostart: false,
-		s:5,
+		s:25,
     	done: function() {
     		finish();
     	},
