@@ -28,6 +28,7 @@ $(document).ready(function() {
 			"<label data='' style='margin-left: 1em' id='" + i + "'>" + " " + todolist[i] + "</label>" +
 			"</div>" +
 			"</li>";
+			$('.todo-modifier button').show();
 			$('#todo-list').html(todos);
 			if(isChecked[i]) {
 				initStrike(i);
@@ -42,10 +43,10 @@ $(document).ready(function() {
 		$current.css('text-decoration', 'line-through');
 		$current.css('opacity', '0.5');
 		var oldCount = parseInt($('#pTotal').text());
-		$('#pTotal').text(oldCount - 1);
+		// $('#pTotal').text(oldCount - 1);
 		var $chk = $current.closest('li').find('input');
 		$chk.attr('checked', true);
-		localStorage.setItem('pTotal', oldCount - 1);		
+		// localStorage.setItem('pTotal', oldCount - 1);		
 	}
 
 	function strike() {
@@ -84,6 +85,10 @@ $(document).ready(function() {
 					$(this).parent().remove();
 					localStorage.setItem('isChecked', JSON.stringify(isChecked));
 					localStorage.setItem('todolist', JSON.stringify(todolist));
+					console.log(localStorage);
+					if(localStorage.getItem('pTotal') < 1) {	
+						$('.todo-modifier button').hide();
+					}
 				}
 			});
 		});
@@ -119,6 +124,7 @@ $(document).ready(function() {
 			localStorage.setItem('pTotal', oldCount + 1);
 			localStorage.setItem('todolist', JSON.stringify(todolist));
 			localStorage.setItem('isChecked', JSON.stringify(isChecked));
+			$('.todo-modifier button').show();
 			strike();
 		} else {
 			$('#new-todo').focus();
