@@ -29,6 +29,8 @@ $(document).ready(function() {
 	var longbreaktime = 15; // default time for a long break
 	var shortbreaktime = 5; // default time for a short break
 	var breakSuggestions = ['have a cup of tea', 'go for a walk', 'meditate'];
+	var changeTitle = true;
+
 	init();
 
 	$('#default').on('change', function() {
@@ -127,6 +129,11 @@ $(document).ready(function() {
 	}
 
 	function newPomodoro() {
+		changeTitle = false;
+		document.title = "New Pomodoro";
+		setTimeout(function() {
+			changeTitle = true;
+		}, 5000);
 		$('#begin').hide();
 		$(".timer h1").countdown({
 			autostart: true,
@@ -147,13 +154,20 @@ $(document).ready(function() {
 				} else {
 					mins = opts.m;
 				}
-				document.title = mins + ":" + secs + ' - ' + title;
+				if(changeTitle) { 
+					document.title = mins + ":" + secs + ' - ' + title;
+				}
 	       		$('.timer h1').text(mins + ":" + secs);
 	    	}
 		});
 	}
 
 	function newShortBreak() {
+		changeTitle = false;
+		document.title = "New Short Break";
+		setTimeout(function() {
+			changeTitle = true;
+		}, 5000);
 		$('#begin').hide();
 		console.log(breakSuggestions[Math.floor(Math.random() * breakSuggestions.length)]);
 		$('#break_tip').html('Why not ' + breakSuggestions[Math.floor(Math.random() * breakSuggestions.length)] + '?');
@@ -178,13 +192,20 @@ $(document).ready(function() {
 					} else {
 						mins = opts.m;
 					}
+				if(changeTitle) { 
 					document.title = mins + ":" + secs + ' - ' + title;
+				}
 		       		$('.timer h1').text(mins + ":" + secs);
 		    	}
 		});
 	}
 
 	function newLongBreak() {
+		changeTitle = false;
+		document.title = "New Long Break";
+		setTimeout(function() {
+			changeTitle = true;
+		}, 5000);
 		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
@@ -205,13 +226,15 @@ $(document).ready(function() {
 					} else {
 						mins = opts.m;
 					}
+				if(changeTitle) { 
 					document.title = mins + ":" + secs + ' - ' + title;
+				}
 		       		$('.timer h1').text(mins + ":" + secs);
 		    	}
 		});
 	}
-		$('#current').text("Currently on: Pomodoro");
 
+	$('#current').text("Currently on: Nothing");
 	$(".timer h1").countdown({
 		autostart: false,
 		s:25,
