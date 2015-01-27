@@ -48,8 +48,8 @@ $(document).ready(function() {
 	var sum;
 	function updateBars() {
 		sum = 0;
-		for (i = 0; i < order.length; i++) {
-			switch(order[i]) {
+		for (i = 0; i < done.length; i++) {
+			switch(done[i]) {
 				case 'pomodoro':
 					sum += 25;
 					break;
@@ -61,33 +61,34 @@ $(document).ready(function() {
 					break;
 			}
 		}
-		sum += 25;
 		var pomodoroSize = 25/sum;
 		var pomodoroWidth = pomodoroSize * $('.progress').width() + 'px';
 		var shortBreakSize = 5/sum;
 		var shortBreakWidth = shortBreakSize * $('.progress').width() + 'px';
 		var longBreakSize = 15/sum;
 		var longBreakWidth = longBreakSize * $('.progress').width() + 'px';
-		$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-danger' style='width:"+pomodoroWidth+"' role='progressbar'></div>");
 		for(i = 0; i < order.length; i++) {
 			switch(order[i]) {
 				case 'pomodoro':
-					$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-danger' style='width:"+pomodoroWidth+"' role='progressbar'></div>");
-	  				break;
+					$('.barz').append("<div id='pomodoro_bar' data-original-title='Pomodoro' data-toggle='tooltip' class='progress-bar progress-bar-danger indiv_bars' style='width:"+pomodoroWidth+"' role='progressbar'></div>");
+					break;
 	  			case 'short_break':
-	  				$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-info' style='width:"+shortBreakWidth+"' role='progressbar'></div>");
+	  				$('.barz').append("<div id='short_break_bar' data-original-title='Short Break' data-toggle='tooltip' data-toggle='tooltip' class='progress-bar progress-bar-info indiv_bars' style='width:"+shortBreakWidth+"' role='progressbar'></div>");
 	  				break;
 	  			case 'long_break':
-	  				$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-success' style='width:"+longBreakWidth+"' role='progressbar'></div>");
+	  				$('.barz').append("<div id='long_break_bar' data-original-title='Long Break' data-toggle='tooltip' class='progress-bar progress-bar-success indiv_bars' style='width:"+longBreakWidth+"' role='progressbar'></div>");
 	  				break;
 			}
 		}
+		$('[data-toggle="tooltip"]').tooltip({
+        	placement : 'top'
+    	});
 		widthBar = $('.progress').width();
 		pixPerSec = widthBar / (sum);
 	}
 
 	function init() {
-	  	order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break", "pomodoro"];
+	  	order = ["pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break"];
 	    done = order;
 	    updateUpcoming();
 	}
@@ -111,7 +112,7 @@ $(document).ready(function() {
 	});
 
 	$('#default').on('click', function() {
-		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break', 'pomodoro'];
+		order = ['pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
 		done = order;
 		updateUpcoming();
 		clearBars();
@@ -119,7 +120,7 @@ $(document).ready(function() {
 	});
 
 	$('#easy').on('click', function() {
-		order = ['short_break', 'pomodoro', 'long_break', 'pomodoro'];
+		order = ['pomodoro', 'short_break', 'pomodoro', 'long_break'];
 		done = order;
 		updateUpcoming();
 		clearBars();
@@ -127,7 +128,7 @@ $(document).ready(function() {
 	});
 
 	$('#hard').on('click', function() {
-		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break', 'pomodoro'];
+		order = ['pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break'];
 		done = order;
 		updateUpcoming();
 		clearBars();
@@ -283,47 +284,56 @@ $(document).ready(function() {
 		    	}
 		});
 	}
-	var first=true;
-	var total;
-	$('#current').text("Currently on: Nothing");
-	$(".timer h1").countdown({
-		autostart: false,
-		s:25,
-    	done: function() {
-    		pomodorosCompleted++;
-	    	$('#pomodoros_done').text("Pomodoros Completed: " + pomodorosCompleted);
-    		finish();
-    	},
-		tpl: function(el,opts) {
-			var secs;
-			var mins;
-			if(opts.s < 10) {
-				secs = "0" + opts.s;
-			} else {
-				secs = opts.s;
-			}
-			if(opts.m < 10) {
-				mins = "0" + opts.m;
-			} else {
-				mins = opts.m;
-			}
-			document.title = mins + ":" + secs + ' - ' + title;
-       		$('.timer h1').text(mins + ":" + secs);
-    	}
-	});
+
+
 	function moveTicker() {
 		var current = $('#moving').css('left').replace(/[^-\d\.]/g, '');
 		var shift = parseFloat(current) + parseFloat(pixPerSec);
 		var totalWidth = $('.progress').width();
 		// $('#moving').css('left', shift + 'px');
 		$('#moving').css('-webkit-transition-duration', sum+'s').css('transform','translate('+totalWidth+'px,0px)');
-		console.log(sum);
 	}
+	$("#moving").bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+		$(this).attr('style','');
+		$(this).css('left','0');
+		moveTicker();
+	});
 
+
+	updateBars();
 	$('#begin').on("click", function() {
 		$('#begin').hide();
-		$('.timer h1').countdown("start");
+		var first=true;
+		var total;
+		$('#current').text("Currently on: Nothing");
+		$(".timer h1").countdown({
+			autostart: true,
+			s:25,
+	    	done: function() {
+	    		pomodorosCompleted++;
+		    	$('#pomodoros_done').text("Pomodoros Completed: " + pomodorosCompleted);
+	    		finish();
+	    	},
+			tpl: function(el,opts) {
+				var secs;
+				var mins;
+				if(opts.s < 10) {
+					secs = "0" + opts.s;
+				} else {
+					secs = opts.s;
+				}
+				if(opts.m < 10) {
+					mins = "0" + opts.m;
+				} else {
+					mins = opts.m;
+				}
+				document.title = mins + ":" + secs + ' - ' + title;
+	       		$('.timer h1').text(mins + ":" + secs);
+	    	}
+		});
 		moveTicker();
+		order = order.slice(1);
+		updateBars();
 	});
 
 
