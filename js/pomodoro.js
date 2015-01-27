@@ -45,9 +45,9 @@ $(document).ready(function() {
 
 		$('.barz').empty();
 	}
-
+	var sum;
 	function updateBars() {
-		var sum = 0;
+		sum = 0;
 		for (i = 0; i < order.length; i++) {
 			switch(order[i]) {
 				case 'pomodoro':
@@ -194,7 +194,6 @@ $(document).ready(function() {
 			tpl: function(el,opts) {
 				var secs;
 				var mins;
-				moveTicker();
 				if(opts.s < 10) {
 					secs = "0" + opts.s;
 				} else {
@@ -233,7 +232,6 @@ $(document).ready(function() {
 				tpl: function(el,opts) {
 					var secs;
 					var mins;
-					moveTicker();
 					if(opts.s < 10) {
 						secs = "0" + opts.s;
 					} else {
@@ -268,7 +266,6 @@ $(document).ready(function() {
 				tpl: function(el,opts) {
 					var secs;
 					var mins;
-					moveTicker();
 					if(opts.s < 10) {
 						secs = "0" + opts.s;
 					} else {
@@ -300,7 +297,6 @@ $(document).ready(function() {
 		tpl: function(el,opts) {
 			var secs;
 			var mins;
-			moveTicker();
 			if(opts.s < 10) {
 				secs = "0" + opts.s;
 			} else {
@@ -315,17 +311,19 @@ $(document).ready(function() {
        		$('.timer h1').text(mins + ":" + secs);
     	}
 	});
-
 	function moveTicker() {
 		var current = $('#moving').css('left').replace(/[^-\d\.]/g, '');
 		var shift = parseFloat(current) + parseFloat(pixPerSec);
-		$('#moving').css('left', shift + 'px');
-		console.log(shift);
+		var totalWidth = $('.progress').width();
+		// $('#moving').css('left', shift + 'px');
+		$('#moving').css('-webkit-transition-duration', sum+'s').css('transform','translate('+totalWidth+'px,0px)');
+		console.log(sum);
 	}
 
 	$('#begin').on("click", function() {
 		$('#begin').hide();
 		$('.timer h1').countdown("start");
+		moveTicker();
 	});
 
 

@@ -300,7 +300,8 @@ body {
 	z-index: 50000;
 	top:-20%;
 	left:0;
-	transition:1s all;
+	-webkit-transition-timing-function: linear; /* Safari and Chrome */
+    transition-timing-function: linear;
 }
 .barz {
 	width:100%;
