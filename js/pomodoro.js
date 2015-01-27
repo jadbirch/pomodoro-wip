@@ -338,16 +338,19 @@ $(document).ready(function() {
 	});
 
 
-	$('#bounce').on("click",function()
+	$('.bounce').on("click",function()
 	{
 		if(bounceClick)
 		{
-			 //$('#hello').addClass("bounceInUp animated");
-
+			 
 			 $('#list').animate({left: '-20%'});
 			 $('#right').animate({right: '0%'});
 			 $('#trapBut').animate({left: '-9.3%'});
-			 // $('#list').addClass("shake animated");
+			 
+			 $('.glyphicon').removeClass("glyphicon-chevron-down");
+			 $('.glyphicon').addClass("glyphicon-chevron-up");
+
+
 			bounceClick=false;
 		}
 		else
@@ -355,14 +358,12 @@ $(document).ready(function() {
 			$('#list').animate({left: '0%'});
 			$('#right').animate({right: '-10%'});
 			$('#trapBut').animate({left: '10.7%'});
-			// $('#list').addClass("shake animated");
+			
+			 $('.glyphicon').removeClass("glyphicon-chevron-up");
+			 $('.glyphicon').addClass("glyphicon-chevron-down");
+
 			bounceClick=true;
 		}
-	
-	// $('#list').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
-	// {
-	// 	$('#list').removeClass("shake animated");
-	// });
 	});
 });
 

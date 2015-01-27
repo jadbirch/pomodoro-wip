@@ -249,7 +249,7 @@ body {
 	color: rgb(180,150,80);
 }
 
-#bounce
+.bounce
 {
 	position: relative;
 	left: 32%;
