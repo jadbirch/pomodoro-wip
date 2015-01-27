@@ -81,7 +81,8 @@ $(document).ready(function() {
 			}
 		}
 		$('[data-toggle="tooltip"]').tooltip({
-        	placement : 'top'
+        	placement : 'top',
+        	container: 'body'
     	});
 		widthBar = $('.progress').width();
 		pixPerSec = widthBar / (sum);

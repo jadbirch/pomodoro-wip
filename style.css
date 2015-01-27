@@ -293,7 +293,7 @@ body {
 }
 
 .progress {
-	overflow-y:visible;
+	overflow:visible !important;
 	z-index:10;
 }
 
