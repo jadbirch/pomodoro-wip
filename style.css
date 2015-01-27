@@ -65,12 +65,15 @@ body {
 	overflow-y:hidden;
 	z-index: 2;
 	border-right:1px solid rgba(0,0,0,0.2);
+	background-color: rgb(180,150,80);
 }
 
 #right {
 	width:80%;
+	height: 100vh;
 	float:left;
 	padding-top:10%;
+	background-color: rgb(80,105,160);
 }
 
 #break_tip {
@@ -144,6 +147,7 @@ body {
 	list-style-type: none;
 	padding-left:0;
 	padding-top:5px;
+	color: rgb(20,35,60);
 }
 
 .view {
@@ -203,6 +207,17 @@ body {
 	padding-top:10px;
 }
 
+.btn
+{
+	background-color: Transparent;
+	color: rgb(180,150,80);
+	border: none;
+	outline:none;
+	cursor:pointer;
+	color: rgb(20,35,60);
+	position: relative;
+}
+
 .buttons {
 	border-radius:5px;
 	border:2px solid rgb(160,160,160);
@@ -213,22 +228,33 @@ body {
 	text-align:center;
 }
 
+#bounce
+{
+	background-color: Transparent;
+	color: rgb(180,150,80);
+	border: none;
+	outline:none;
+	cursor:pointer;
+
+}
+
 #hello
 {
 	height : 100%;
 	width : 100%;
 	postion:relative;
-	background-color: white;
+	background-color: rgb(20,35,60);;
 	bottom: 0px;
 	-webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
 	box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
+	color: rgb(180,150,80);
 
 }
 #trapBut
 {
 	postion:relative;
 	margin: 0 auto 0 auto;
-	border-bottom: 30px solid rgb(180,180,180);
+	border-bottom: 30px solid rgb(20,35,60);
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
 	height: 0;
@@ -251,8 +277,6 @@ body {
 	text-align:center;
 
 	bottom: -45%;
-
-
 
 	z-index: 1;
 }
