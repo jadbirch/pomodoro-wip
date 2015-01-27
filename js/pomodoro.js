@@ -1,24 +1,3 @@
-// function for updating the text that shows what is coming up. outside the document scope for some reason...
-
-function updateUpcoming() {
-	var upcoming = "Upcoming: ";
-	(order.length == 0) ? upcoming += "Nothing " : upcoming = upcoming;
-	for (i = 0; i < order.length; i++) {
-		switch(order[i]) {
-			case 'pomodoro':
-				upcoming += (i < order.length - 1) ? "Pomodoro, " : "Pomodoro ";
-				break;
-			case 'short_break':
-				upcoming += (i < order.length - 1) ? "Short Break, " : "Short Break ";
-				break;
-			case 'long_break':
-				upcoming += (i < order.length - 1) ? "Long Break, " : "Long Break ";
-				break;
-		}
-	}
-	$('#upcoming').text(upcoming);
-}
-
 $(document).ready(function() {
 	var left = Number.MAX_VALUE; // number of remaining repeats
 	var done; 
@@ -30,7 +9,8 @@ $(document).ready(function() {
 	var shortbreaktime = 5; // default time for a short break
 	var breakSuggestions = ['have a cup of tea', 'go for a walk', 'meditate'];
 	var changeTitle = true;
-
+	var widthBar;
+	var pixPerSec;
 	var bounceClick=true;
 
 	init();
@@ -45,6 +25,79 @@ $(document).ready(function() {
 		    order = [];
 		  }
 	});
+
+	$(window).resize(function() {
+		clearBars();
+		updateBars();
+	});
+
+		// function for updating the text that shows what is coming up. outside the document scope for some reason...
+
+	function updateUpcoming() {
+		var upcoming = "Upcoming: ";
+		(order.length == 0) ? upcoming += "Nothing " : upcoming = upcoming;
+		for (i = 0; i < order.length; i++) {
+			switch(order[i]) {
+				case 'pomodoro':
+					upcoming += (i < order.length - 1) ? "Pomodoro, " : "Pomodoro ";
+					break;
+				case 'short_break':
+					upcoming += (i < order.length - 1) ? "Short Break, " : "Short Break ";
+					break;
+				case 'long_break':
+					upcoming += (i < order.length - 1) ? "Long Break, " : "Long Break ";
+					break;
+			}
+		}
+		clearBars();
+		updateBars();
+		$('#upcoming').text(upcoming);
+	}
+
+	function clearBars() {
+
+		$('.barz').empty();
+	}
+
+	function updateBars() {
+		var sum = 0;
+		for (i = 0; i < order.length; i++) {
+			switch(order[i]) {
+				case 'pomodoro':
+					sum += 25;
+					break;
+				case 'short_break':
+					sum += 5;
+					break;
+				case 'long_break':
+					sum += 15;
+					break;
+			}
+		}
+		sum += 25;
+		var pomodoroSize = 25/sum;
+		var pomodoroWidth = pomodoroSize * $('.progress').width() + 'px';
+		var shortBreakSize = 5/sum;
+		var shortBreakWidth = shortBreakSize * $('.progress').width() + 'px';
+		var longBreakSize = 15/sum;
+		var longBreakWidth = longBreakSize * $('.progress').width() + 'px';
+		$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-danger' style='width:"+pomodoroWidth+"' role='progressbar'></div>");
+		for(i = 0; i < order.length; i++) {
+			switch(order[i]) {
+				case 'pomodoro':
+					$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-danger' style='width:"+pomodoroWidth+"' role='progressbar'></div>");
+	  				break;
+	  			case 'short_break':
+	  				$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-info' style='width:"+shortBreakWidth+"' role='progressbar'></div>");
+	  				break;
+	  			case 'long_break':
+	  				$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-success' style='width:"+longBreakWidth+"' role='progressbar'></div>");
+	  				break;
+			}
+		}
+		widthBar = $('.progress').width();
+		pixPerSec = widthBar / (sum);
+	}
 
 	function init() {
 	  	order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break", "pomodoro"];
@@ -245,18 +298,9 @@ $(document).ready(function() {
     		finish();
     	},
 		tpl: function(el,opts) {
-			if(first) {
-				total = opts.s + (opts.m * 60);
-				console.log(total);
-				first = false;
-			} 
 			var secs;
 			var mins;
-			var secondsleft = opts.s + (opts.m * 60);
-			var percent = ((total - secondsleft) / total);
-			console.log(percent);
-			var width =  percent * $('.progress').width();
-			$('.progress-bar').css('width',width);
+			moveTicker();
 			if(opts.s < 10) {
 				secs = "0" + opts.s;
 			} else {
@@ -271,6 +315,13 @@ $(document).ready(function() {
        		$('.timer h1').text(mins + ":" + secs);
     	}
 	});
+
+	function moveTicker() {
+		var current = $('#moving').css('left').replace(/[^-\d\.]/g, '');
+		var shift = parseFloat(current) + parseFloat(pixPerSec);
+		$('#moving').css('left', shift + 'px');
+		console.log(shift);
+	}
 
 	$('#begin').on("click", function() {
 		$('#begin').hide();
