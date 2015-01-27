@@ -9,6 +9,7 @@ html {
 body {
 	min-height:100%;
 	margin:0;
+	background-color: rgb(40,55,80) !important;
 /*	overflow-y:hidden !important;
 */}
 
@@ -74,6 +75,7 @@ body {
 	float:left;
 	padding:0 10px;
 	position: relative;
+	left:0%;
 	overflow-y:hidden;
 	z-index: 2;
 	border-right:1px solid rgba(0,0,0,0.2);
@@ -81,9 +83,10 @@ body {
 }
 
 #right {
-	width:80%;
+	width:100%;
 	height: 100vh;
-	float:left;
+	position: fixed;
+	right:-10%;
 	padding-top:10%;
 	background-color: rgb(40,55,80);
 }
@@ -248,56 +251,38 @@ body {
 
 #bounce
 {
+	position: relative;
+	left: 32%;
+	top: 90%;
 	background-color: Transparent;
 	color: rgb(180,150,80);
 	border: none;
 	outline:none;
 	cursor:pointer;
 	display: inline-block;
+	line-height: 30px;
+	font-size: 1.5em;
 }
 
-#hello
-{
-	height : 100%;
-	width : 100%;
-	postion:relative;
-	background-color: rgb(20,35,60);
-	-webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
-	box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
-	color: rgb(180,150,80);
-
-}
 #trapBut
 {
-	postion:relative;
-	margin: 0 auto 0 auto;
-	border-bottom: 30px solid rgb(20,35,60);
+	border-bottom: 30px solid rgb(30,45,70);
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
 	height: 0;
-	width: 25%;
-	position: relative;
-	top: 0%;
+	width: 20%;
 
-}
-#bounceLayer
-{
-	-vendor-animation-duration: 3s;
-	-vendor-animation-delay: 0.5s;
-	-vendor-animation-iteration-count: infinite;
+	-ms-transform: rotate(90deg); 
+    -webkit-transform: rotate(90deg); 
+    transform: rotate(90deg);
 
-	position: fixed;
-	height : 50%;
-	width : 80%;
-	background-color: transparent;
+	position: absolute;
+	top: 50%;
+	left: 10.7%;
 	
-	text-align:center;
-
-	bottom: -45%;
-
-	z-index: 1;
+	
+    z-index: 5;
 }
-
 .progress {
 	overflow:visible !important;
 	z-index:10;

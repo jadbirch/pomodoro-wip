@@ -340,28 +340,29 @@ $(document).ready(function() {
 
 	$('#bounce').on("click",function()
 	{
-		var height = $("#right").height();
-		var bounceHeight = height * 0.9 + 'px';
-
 		if(bounceClick)
 		{
 			 //$('#hello').addClass("bounceInUp animated");
 
-			 $('#bounceLayer').animate({bottom: '-10%'});
-			 $('#bounceLayer').addClass("bounce animated");
+			 $('#list').animate({left: '-20%'});
+			 $('#right').animate({right: '0%'});
+			 $('#trapBut').animate({left: '-9.3%'});
+			 // $('#list').addClass("shake animated");
 			bounceClick=false;
 		}
 		else
 		{
-			$('#bounceLayer').animate({bottom: '-45%'});
-			$('#bounceLayer').addClass("bounce animated");
+			$('#list').animate({left: '0%'});
+			$('#right').animate({right: '-10%'});
+			$('#trapBut').animate({left: '10.7%'});
+			// $('#list').addClass("shake animated");
 			bounceClick=true;
 		}
 	
-	$('#bounceLayer').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
-	{
-		$('#bounceLayer').removeClass("bounce animated");
-	});
+	// $('#list').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
+	// {
+	// 	$('#list').removeClass("shake animated");
+	// });
 	});
 });
 
