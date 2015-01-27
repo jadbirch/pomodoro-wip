@@ -45,6 +45,7 @@ $(document).ready(function() {
 
 		$('.barz').empty();
 	}
+
 	var sum;
 	function updateBars() {
 		sum = 0;
@@ -334,7 +335,6 @@ $(document).ready(function() {
 		});
 		moveTicker();
 		order = order.slice(1);
-		updateBars();
 	});
 
 
