@@ -108,12 +108,12 @@ $(document).ready(function() {
 		var oldCount = parseInt($('#pTotal').text());
 		var todos = $('#todo-list').html();
 		var current = $('#new-todo').val().length;
+		console.log(current);
 		if(current > 0) {
 			todos += ""+
 			"<li>" +
 			"<div class='view'>" +
-			"<input class='toggle' type='checkbox'>" +
-			"<label data='' style='margin-left: 1em' id='" + oldCount + "'>" + " " + $('#new-todo').val() + "</label>" +
+			"<label data='' id='" + oldCount + "'><input style='margin-right: 1em' class='toggle' type='checkbox'>" + " " + $('#new-todo').val() + "</label>" +
 			"</div>" +
 			"</li>";
 			todolist[oldCount] = ($('#new-todo').val());
