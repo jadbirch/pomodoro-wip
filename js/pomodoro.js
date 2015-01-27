@@ -49,8 +49,6 @@ $(document).ready(function() {
 					break;
 			}
 		}
-		clearBars();
-		updateBars();
 		$('#upcoming').text(upcoming);
 	}
 
@@ -127,18 +125,24 @@ $(document).ready(function() {
 		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break', 'pomodoro'];
 		done = order;
 		updateUpcoming();
+		clearBars();
+		updateBars();
 	});
 
 	$('#easy').on('click', function() {
 		order = ['short_break', 'pomodoro', 'long_break', 'pomodoro'];
 		done = order;
 		updateUpcoming();
+		clearBars();
+		updateBars();
 	});
 
 	$('#hard').on('click', function() {
 		order = ['short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'short_break', 'pomodoro', 'long_break', 'pomodoro'];
 		done = order;
 		updateUpcoming();
+		clearBars();
+		updateBars();
 	});
 
 	function finish() {
@@ -199,6 +203,7 @@ $(document).ready(function() {
 			tpl: function(el,opts) {
 				var secs;
 				var mins;
+				moveTicker();
 				if(opts.s < 10) {
 					secs = "0" + opts.s;
 				} else {
@@ -237,6 +242,7 @@ $(document).ready(function() {
 				tpl: function(el,opts) {
 					var secs;
 					var mins;
+					moveTicker();
 					if(opts.s < 10) {
 						secs = "0" + opts.s;
 					} else {
@@ -271,6 +277,7 @@ $(document).ready(function() {
 				tpl: function(el,opts) {
 					var secs;
 					var mins;
+					moveTicker();
 					if(opts.s < 10) {
 						secs = "0" + opts.s;
 					} else {
@@ -344,7 +351,7 @@ $(document).ready(function() {
 		}
 		else
 		{
-			$('#bounceLayer').animate({bottom: '-47%'});
+			$('#bounceLayer').animate({bottom: '-45%'});
 			$('#bounceLayer').addClass("bounce animated");
 			bounceClick=true;
 		}
