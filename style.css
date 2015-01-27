@@ -12,6 +12,12 @@ body {
 /*	overflow-y:hidden !important;
 */}
 
+#noJS {
+	z-index: 5000;
+	background-color: rgb(40,55,80);
+	color: white;
+}
+
 #pomodoros_done {
 	position: fixed;
 	top: 1em;
