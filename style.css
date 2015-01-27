@@ -293,7 +293,7 @@ body {
 }
 
 #moving {
-	width:3px;
+	width:1px;
 	height:150%;
 	background-color:black;
 	position:absolute;
