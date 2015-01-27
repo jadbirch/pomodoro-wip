@@ -12,19 +12,8 @@ $(document).ready(function() {
 	var widthBar;
 	var pixPerSec;
 	var bounceClick=true;
-
+	var pomodorosCompleted = 0;
 	init();
-
-	$('#default').on('change', function() {
-		  if ( $('#default').is(':checked') ) {
-		    left = Number.MAX_VALUE;
-		    order = ["short_break", "pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break"];
-		    updateUpcoming();
-		  } else {
-		    left = 0;
-		    order = [];
-		  }
-	});
 
 	$(window).resize(function() {
 		clearBars();
@@ -198,6 +187,8 @@ $(document).ready(function() {
 			autostart: true,
 			s:25,
 	    	done: function() {
+	    		pomodorosCompleted++;
+	    		$('#pomodoros_done').text("Pomodoros Completed: " + pomodorosCompleted);
 	    		finish();
 	    	},
 			tpl: function(el,opts) {
@@ -302,6 +293,8 @@ $(document).ready(function() {
 		autostart: false,
 		s:25,
     	done: function() {
+    		pomodorosCompleted++;
+	    	$('#pomodoros_done').text("Pomodoros Completed: " + pomodorosCompleted);
     		finish();
     	},
 		tpl: function(el,opts) {

@@ -12,6 +12,12 @@ body {
 /*	overflow-y:hidden !important;
 */}
 
+#pomodoros_done {
+	position: fixed;
+	top: 1em;
+	right: 1em;
+}
+
 #timeline {
 	border-radius:5px;
 	border:0px solid rgb(160,160,160);
