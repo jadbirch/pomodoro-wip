@@ -80,6 +80,7 @@ body {
 	z-index: 2;
 	border-right:1px solid rgba(0,0,0,0.2);
 	background-color: rgb(30,45,70);
+	color:white;
 }
 
 #right {
@@ -162,7 +163,6 @@ body {
 	list-style-type: none;
 	padding-left:0;
 	padding-top:5px;
-	color: rgb(20,35,60);
 }
 
 .view {
