@@ -289,8 +289,14 @@ $(document).ready(function() {
 		var totalWidth = $('.progress').width();
 		// $('#moving').css('left', shift + 'px');
 		$('#moving').css('-webkit-transition-duration', sum+'s').css('transform','translate('+totalWidth+'px,0px)');
-		console.log(sum);
 	}
+	$("#moving").bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+		$(this).attr('style','');
+		$(this).css('left','0');
+		moveTicker();
+	});
+
+
 	updateBars();
 	$('#begin').on("click", function() {
 		$('#begin').hide();
