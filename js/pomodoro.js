@@ -70,16 +70,19 @@ $(document).ready(function() {
 		for(i = 0; i < order.length; i++) {
 			switch(order[i]) {
 				case 'pomodoro':
-					$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-danger' style='width:"+pomodoroWidth+"' role='progressbar'></div>");
-	  				break;
+					$('.barz').append("<div id='pomodoro_bar' data-original-title='Pomodoro' data-toggle='tooltip' class='progress-bar progress-bar-danger indiv_bars' style='width:"+pomodoroWidth+"' role='progressbar'></div>");
+					break;
 	  			case 'short_break':
-	  				$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-info' style='width:"+shortBreakWidth+"' role='progressbar'></div>");
+	  				$('.barz').append("<div id='short_break_bar' data-original-title='Short Break' data-toggle='tooltip' data-toggle='tooltip' class='progress-bar progress-bar-info indiv_bars' style='width:"+shortBreakWidth+"' role='progressbar'></div>");
 	  				break;
 	  			case 'long_break':
-	  				$('.barz').append("<div id='indiv_bars' class='progress-bar progress-bar-success' style='width:"+longBreakWidth+"' role='progressbar'></div>");
+	  				$('.barz').append("<div id='long_break_bar' data-original-title='Long Break' data-toggle='tooltip' class='progress-bar progress-bar-success indiv_bars' style='width:"+longBreakWidth+"' role='progressbar'></div>");
 	  				break;
 			}
 		}
+		$('[data-toggle="tooltip"]').tooltip({
+        	placement : 'top'
+    	});
 		widthBar = $('.progress').width();
 		pixPerSec = widthBar / (sum);
 	}
