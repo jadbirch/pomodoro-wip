@@ -305,6 +305,7 @@ $(document).ready(function() {
 	updateBars();
 	$('#begin').on("click", function() {
 		$('#begin').hide();
+		$('.buttons').attr("disabled","true");
 		var first=true;
 		var total;
 		$('#current').text("Currently on: Nothing");
