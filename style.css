@@ -236,12 +236,14 @@ body {
 }
 
 .buttons {
-	border:2px solid rgb(200,200,200);
-	color:rgb(200,200,200);
+	border:2px solid rgb(255,255,255);
+	color:rgb(255,255,255);
 	background-color:rgb(20,35,60);
 	font-family:'Roboto';
+	font-weight:bold;
 	padding:1%;
 	text-align:center;
+	border-radius:5px;
 }
 
 .pomDetails
