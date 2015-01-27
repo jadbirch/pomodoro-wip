@@ -71,7 +71,7 @@ body {
 	overflow-y:hidden;
 	z-index: 2;
 	border-right:1px solid rgba(0,0,0,0.2);
-	background-color: rgb(180,150,80);
+	background-color: rgb(30,45,70);
 }
 
 #right {
@@ -79,7 +79,7 @@ body {
 	height: 100vh;
 	float:left;
 	padding-top:10%;
-	background-color: rgb(80,105,160);
+	background-color: rgb(40,55,80);
 }
 
 #break_tip {
@@ -102,6 +102,7 @@ body {
 	width:50%;
 	text-align:center;
 	margin: 0 auto;
+	color: white;
 }
 	
 .timer p {
@@ -113,7 +114,7 @@ body {
 }
 
 #begin {
-	border:2px solid rgb(160,160,160);
+	border:2px solid rgb(200,200,200);
 	width:150px;
 	height:50px;
 	border-radius:10px;
@@ -226,12 +227,17 @@ body {
 
 .buttons {
 	border-radius:5px;
-	border:2px solid rgb(160,160,160);
-	color:rgb(150,150,150);
-	background-color:transparent;
+	border:2px solid rgb(200,200,200);
+	color:rgb(200,200,200);
+	background-color:rgb(20,35,60);
 	font-family:'Roboto';
 	padding:1%;
 	text-align:center;
+}
+
+.pomDetails
+{
+	color: rgb(180,150,80);
 }
 
 #bounce
@@ -241,7 +247,7 @@ body {
 	border: none;
 	outline:none;
 	cursor:pointer;
-
+	display: inline-block;
 }
 
 #hello
@@ -249,8 +255,7 @@ body {
 	height : 100%;
 	width : 100%;
 	postion:relative;
-	background-color: rgb(20,35,60);;
-	bottom: 0px;
+	background-color: rgb(20,35,60);
 	-webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
 	box-shadow: 2px 0 10px 0 rgba(0,0,0,0.4);
 	color: rgb(180,150,80);
