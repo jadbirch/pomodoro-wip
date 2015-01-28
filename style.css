@@ -376,11 +376,15 @@ button {
 	appearance:normal !important;
 	-moz-appearance:normal !important; /* Firefox */
 	-webkit-appearance:normal !important; /* Safari and Chrome */
+	transition:1s all;
 } 
 
 button:hover{
 	color:#ecf0f1 !important;
-	border:2px solid #ecf0f1;
+	border:2px solid #ecf0f1 !important;
+}
+button:focus{
+	outline:none;
 }
 .bounce
 {
