@@ -56,6 +56,22 @@ body {
 	height:100%;
 }
 
+[disabled] {
+    pointer-events: none;
+}
+
+.schedule_span {
+	display: inline-block;
+	border:2px solid rgb(255,255,255);
+	color:rgb(255,255,255);
+	background-color:rgb(20,35,60);
+	font-family:'Roboto';
+	font-weight:bold;
+	padding:1%;
+	text-align:center;
+	border-radius:5px;
+}
+
 #long_break {
 	width: 35%;
 	border-radius:5px;
@@ -235,13 +251,24 @@ body {
 	position: relative;
 }
 
-.buttons {
-	border:2px solid rgb(255,255,255);
+.schedule_buttons {
 	color:rgb(255,255,255);
 	background-color:rgb(20,35,60);
 	font-family:'Roboto';
 	font-weight:bold;
 	padding:1%;
+	border: none;
+	text-align:center;
+	border-radius:5px;
+}
+
+.buttons {
+	color:rgb(255,255,255);
+	background-color:rgb(20,35,60);
+	font-family:'Roboto';
+	font-weight:bold;
+	padding:1%;
+	border: none;
 	text-align:center;
 	border-radius:5px;
 }
@@ -257,7 +284,7 @@ body {
 	left: 32%;
 	top: 90%;
 	background-color: Transparent;
-	color: rgb(180,150,80);
+	color:rgb(255,255,255);
 	border: none;
 	outline:none;
 	cursor:pointer;

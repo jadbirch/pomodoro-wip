@@ -81,7 +81,7 @@ $(document).ready(function() {
 	  				break;
 			}
 		}
-		$('[data-toggle="tooltip"]').tooltip({
+		$('.indiv_bars').tooltip({
         	placement : 'top',
         	container: 'body'
     	});
@@ -305,7 +305,10 @@ $(document).ready(function() {
 	updateBars();
 	$('#begin').on("click", function() {
 		$('#begin').hide();
-		$('.buttons').attr("disabled","true");
+		$('.schedule_span').tooltip({
+        	placement : 'top'
+    	});
+		$('.button').attr("disabled","true");
 		var first=true;
 		var total;
 		$('#current').text("Currently on: Nothing");
