@@ -23,15 +23,15 @@ body {
 
 .help-tip{
     position: absolute;
-    top: 18px;
-    right: 18px;
+    bottom: 18px;
+    left: 30%;
     text-align: center;
-	background-color: rgb(40,55,80);
+	background-color: rgb(60,75,100);
     border-radius: 50%;
     width: 24px;
     height: 24px;
     font-size: 14px;
-    line-height: 26px;
+    line-height: 24px;
     cursor: default;
 }
 
@@ -44,7 +44,7 @@ body {
 
 .help-tip:hover p{
     display:block;
-    transform-origin: 100% 0%;
+    transform-origin: 20% 20%;
 
     -webkit-animation: fadeIn 0.3s ease-in-out;
     animation: fadeIn 0.3s ease-in-out;
@@ -60,10 +60,11 @@ body {
     position: absolute;
     border-radius: 3px;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-    right: -4px;
+    bottom:20px;
     color: #FFF;
     font-size: 13px;
     line-height: 1.4;
+    left:-120px;
 }
 
 .help-tip p:before{ /* The pointer of the tooltip */
@@ -72,9 +73,9 @@ body {
     width:0;
     height: 0;
     border:6px solid transparent;
-    border-bottom-color:#1E2021;
-    right:10px;
-    top:-12px;
+    border-top-color:#1E2021;
+    left:42%;
+    bottom:-12px;
 }
 
 .help-tip p:after{ /* Prevents the tooltip from being hidden */
@@ -148,17 +149,17 @@ body {
     pointer-events: none;
 }
 
-.schedule_span {
-	display: inline-block;
-	border:2px solid rgb(255,255,255);
-	color:rgb(255,255,255);
-	background-color:rgb(20,35,60);
-	font-family:'Roboto';
-	font-weight:bold;
-	padding:1%;
-	text-align:center;
-	border-radius:5px;
-}
+	/*.schedule_span {
+		display: inline-block;
+		border:2px solid rgb(255,255,255);
+		color:rgb(255,255,255);
+		background-color:rgb(20,35,60);
+		font-family:'Roboto';
+		font-weight:bold;
+		padding:1%;
+		text-align:center;
+		border-radius:5px;
+	}*/
 
 #long_break {
 	width: 35%;
@@ -315,91 +316,21 @@ body {
 	text-align:center;
 }
 
-.todo-modifier button {
-	font-size: 13px;
-	display:none;
-	border:2px solid rgb(255,255,255);
+
+.todo-modifier button:hover{
 	color:white;
-	font-family:'Roboto';
-	font-weight:bold;
 }
 #todos {
 	height:100%;
 	padding-top:10px;
 }
 
-.btn
-{
-	background-color: Transparent;
-	color: rgb(180,150,80);
-	border: none;
-	outline:none;
-	cursor:pointer;
-	color: rgb(20,35,60);
-	position: relative;
-}
-
-.schedule_buttons {
-	color:rgb(255,255,255);
-	background-color:rgb(20,35,60);
-	font-family:'Roboto';
-	font-weight:bold;
-	padding:1%;
-	border: none;
-	text-align:center;
-	border-radius:5px;
-}
-
-.buttons {
-	color:rgb(255,255,255);
-	background-color:rgb(20,35,60);
-	font-family:'Roboto';
-	font-weight:bold;
-	padding:1%;
-	border: none;
-	text-align:center;
-	border-radius:5px;
-}
 
 .pomDetails
 {
 	color: rgb(180,150,80);
 }
 
-.bounce
-{
-	position: relative;
-	left: 32%;
-	top: 90%;
-	background-color: Transparent;
-	color:rgb(255,255,255);
-	border: none;
-	outline:none;
-	cursor:pointer;
-	display: inline-block;
-	line-height: 30px;
-	font-size: 1.5em;
-}
-
-#trapBut
-{
-	border-bottom: 30px solid rgb(30,45,70);
-	border-left: 15px solid transparent;
-	border-right: 15px solid transparent;
-	height: 0;
-	width: 20%;
-
-	-ms-transform: rotate(90deg); 
-    -webkit-transform: rotate(90deg); 
-    transform: rotate(90deg);
-
-	position: absolute;
-	top: 50%;
-	left: 10.7%;
-	
-	
-    z-index: 5;
-}
 .progress {
 	overflow:visible !important;
 	z-index:10;
@@ -430,4 +361,59 @@ body {
 }
 #long_break_bar:hover {
 	background-color: #76D276;
+}
+
+button:click {
+	outline:none;
+}
+
+button {
+	font-weight:bold !important;
+	border-radius:5px;
+	color:#bdc3c7 !important;
+	border:2px solid #bdc3c7 !important;
+	background-color: transparent;
+	appearance:normal !important;
+	-moz-appearance:normal !important; /* Firefox */
+	-webkit-appearance:normal !important; /* Safari and Chrome */
+} 
+
+button:hover{
+	color:#ecf0f1 !important;
+	border:2px solid #ecf0f1;
+}
+.bounce
+{
+	position: relative;
+	left: 32%;
+	top: 90%;
+	background-color: Transparent;
+	color:rgb(255,255,255);
+	border: none;
+	outline:none;
+	cursor:pointer;
+	display: inline-block;
+	line-height: 30px;
+	font-size: 1.5em;
+	border:0 !important;
+}
+
+#trapBut
+{
+	border-bottom: 30px solid rgb(30,45,70);
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	height: 0;
+	width: 20%;
+
+	-ms-transform: rotate(90deg); 
+    -webkit-transform: rotate(90deg); 
+    transform: rotate(90deg);
+
+	position: absolute;
+	top: 50%;
+	left: 10.7%;
+	
+	
+    z-index: 5;
 }
