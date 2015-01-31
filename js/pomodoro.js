@@ -168,7 +168,7 @@ $(document).ready(function() {
 					return;
 				} else {
 					$('#current').text("Currently on: Nothing");
-					document.title = "Pomodoro Timer";
+					document.title = "5sqrd";
 				}	
 				break;
 		}		
@@ -188,7 +188,7 @@ $(document).ready(function() {
 		$('#begin').hide();
 		$(".timer h1").countdown({
 			autostart: true,
-			s:25,
+			m:25,
 	    	done: function() {
 	    		pomodorosCompleted++;
 	    		$('#pomodoros_done').text("Pomodoros Completed: " + pomodorosCompleted);
@@ -227,7 +227,7 @@ $(document).ready(function() {
 		$('#break_tip').addClass('load');
 		$(".timer h1").countdown({
 				autostart: true,
-				s:shortbreaktime,
+				m:5,
 		    	done: function() {
 		    		finish();
 		    		$('#break_tip').removeClass('load');
@@ -262,7 +262,7 @@ $(document).ready(function() {
 		$('#begin').hide();
 		$(".timer h1").countdown({
 				autostart: true,
-				s:longbreaktime,
+				m:15,
 		    	done: function() {
     				finish();
 		    	},
@@ -308,13 +308,13 @@ $(document).ready(function() {
 		$('.schedule_span').tooltip({
         	placement : 'top'
     	});
-		$('.button').attr("disabled","true");
+		$('.schedule_buttons').attr("disabled","true");
 		var first=true;
 		var total;
 		$('#current').text("Currently on: Nothing");
 		$(".timer h1").countdown({
 			autostart: true,
-			s:25,
+			m:25,
 	    	done: function() {
 	    		pomodorosCompleted++;
 		    	$('#pomodoros_done').text("Pomodoros Completed: " + pomodorosCompleted);
