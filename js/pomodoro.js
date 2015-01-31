@@ -293,7 +293,7 @@ $(document).ready(function() {
 		var shift = parseFloat(current) + parseFloat(pixPerSec);
 		var totalWidth = $('.progress').width();
 		// $('#moving').css('left', shift + 'px');
-		$('#moving').css('-webkit-transition-duration', sum+'s').css('transform','translate('+totalWidth+'px,0px)');
+		$('#moving').css('-webkit-transition-duration', sum*60 +'s').css('transform','translate('+totalWidth+'px,0px)');
 	}
 	$("#moving").bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
 		$(this).attr('style','');
